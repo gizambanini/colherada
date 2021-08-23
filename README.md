@@ -20,4 +20,6 @@ Projeto de Práticas Profissionais 3 😃
 - Outros (Sucos/vitaminas/...)
     
      Além de todas essas funções, no app qualquer um poderá calcular sua quantidade ideal de calorias diárias para perder/manter/ganhar peso, assim conseguindo criar um cardápio mental usando como parâmetro a quantidade de calorias indicada nas receitas. 
-
+<p align="center">
+<img src = "https://media2.giphy.com/media/osjgQPWRx3cac/giphy.gif?cid=ecf05e47pkqh7utv1w5msjx6wa72aoe5p8xce5uiunaw8e1f&rid=giphy.gif&ct=g"/>
+</p> 
