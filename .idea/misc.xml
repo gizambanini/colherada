@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/milen/AndroidStudioProjects/Colherada/app/src/main/res/layout/activity_main.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/milen/AndroidStudioProjects/Colherada/app/src/main/res/drawable/round_border.xml" value="0.20625" />
+        <entry key="..\:/Users/milen/AndroidStudioProjects/Colherada/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/milen/AndroidStudioProjects/Colherada/app/src/main/res/layout/activity_main_calorias.xml" value="0.18" />
+        <entry key="..\:/Users/milen/AndroidStudioProjects/Colherada/app/src/main/res/layout/round_border.xml" value="0.19010416666666666" />
       </map>
     </option>
   </component>
