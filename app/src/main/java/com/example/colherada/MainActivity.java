@@ -2,6 +2,7 @@ package com.example.colherada;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -11,7 +12,7 @@ import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn1, btn2, btn3;
+    Button btn1, btn2, btn3, btnCalorias;
     //LinearLayout layout;
 
     @Override
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
         btn3 = (Button) findViewById(R.id.btn3);
+        btnCalorias = (Button) findViewById(R.id.btnCalorias);
 //        layout = (LinearLayout) findViewById(R.id.layout);
 
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +89,16 @@ public class MainActivity extends AppCompatActivity {
                     btn3.setText("");
                     btn3.setLayoutParams(new LinearLayout.LayoutParams(810, 450));
                 }
+            }
+        });
+        btnCalorias.setOnClickListener ( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity.this,MainCalorias.class);
+
+                startActivity(intent);
+
             }
         });
     }
