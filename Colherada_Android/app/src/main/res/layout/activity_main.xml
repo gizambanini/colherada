@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imgMenuLateral"
+        android:layout_width="40dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu" />
+
+    <Button
+        android:id="@+id/btnCalorias"
+        android:layout_width="139dp"
+        android:layout_height="74dp"
+        android:backgroundTint="#E3E3E3"
+        android:fontFamily="@font/lato"
+        android:gravity="center"
+        android:text="Calorias"
+        android:textAlignment="center"
+        android:textColor="#0E0E0E"
+        app:icon="@drawable/fogo"
+        app:iconGravity="top"
+        app:iconPadding="3dp"
+        app:iconSize="30dp"
+        app:iconTint="#FF0E0E0E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnReceitas"
+        android:layout_width="139dp"
+        android:layout_height="74dp"
+        android:backgroundTint="#C4C4C4"
+        android:fontFamily="@font/lato"
+        android:gravity="center"
+        android:text="Receitas"
+        android:textAlignment="center"
+        android:textColor="#0E0E0E"
+        app:icon="@drawable/receitas"
+        app:iconGravity="top"
+        app:iconPadding="6dp"
+        app:iconSize="30dp"
+        app:iconTint="#FF0E0E0E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnHome"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnHome"
+        android:layout_width="139dp"
+        android:layout_height="74dp"
+        android:backgroundTint="#C4C4C4"
+        android:fontFamily="@font/lato"
+        android:gravity="center"
+        android:text="Home"
+        android:textAlignment="center"
+        android:textColor="#0E0E0E"
+        app:icon="@drawable/home"
+        app:iconGravity="top"
+        app:iconPadding="6dp"
+        app:iconSize="30dp"
+        app:iconTint="#FF0E0E0E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnCalorias"
+        app:layout_constraintStart_toEndOf="@+id/btnReceitas" />
+
+    <Button
+        android:id="@+id/btn2"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:background="@android:color/transparent"
+        android:drawableTop="@drawable/home_img2"
+        android:text="a"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn1" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+
+        android:layout_marginTop="10dp"
+        android:background="#00FFFFFF"
+        android:drawableTop="@drawable/home_img3"
+        android:text="a"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgMenuLateral" />
+
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginBottom="14dp"
+        android:background="@android:color/transparent"
+        android:drawableTop="@drawable/home_img1"
+        android:text="a"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btnCalorias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
