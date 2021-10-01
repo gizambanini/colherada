@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:gravity="center">
 
     <Button
         android:id="@+id/btn1"
@@ -16,8 +17,7 @@
         android:background="#00FFFFFF"
         android:drawableTop="@drawable/home_img3"
         android:text="a"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/btn2"
@@ -26,9 +26,7 @@
         android:background="@android:color/transparent"
         android:drawableTop="@drawable/home_img2"
         android:text="a"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/btn3"
-        tools:layout_editor_absoluteX="-16dp" />
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/btn3"
@@ -37,41 +35,7 @@
         android:background="@android:color/transparent"
         android:drawableTop="@drawable/home_img1"
         android:text="a"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/btn1"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/btnHome"
-        android:layout_width="139dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="128dp"
-        android:backgroundTint="#C4C4C4"
-        android:drawableTop="@drawable/home"
-        android:fontFamily="@font/lato"
-        android:gravity="center"
-        android:text="Home"
-        android:textAlignment="center"
-        android:textColor="#0E0E0E"
-        app:layout_constraintStart_toEndOf="@+id/btnReceitas"
-        app:layout_constraintTop_toBottomOf="@+id/btn2" />
-
-    <Button
-        android:id="@+id/btnReceitas"
-        android:layout_width="139dp"
-        android:layout_height="74dp"
-        android:backgroundTint="#C4C4C4"
-        android:drawableTop="@drawable/receitas"
-        android:fontFamily="@font/lato"
-        android:gravity="center"
-        android:text="Receitas"
-        android:textAlignment="center"
-        android:textColor="#0E0E0E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn2"
-        app:layout_constraintVertical_bias="1.0" />
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/btnCalorias"
@@ -84,9 +48,6 @@
         android:gravity="center"
         android:text="Calorias"
         android:textAlignment="center"
-        android:textColor="#0E0E0E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnHome"
-        app:layout_constraintTop_toBottomOf="@+id/btn2"
-        app:layout_constraintVertical_bias="1.0" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textColor="#0E0E0E" />
+
+</LinearLayout>
