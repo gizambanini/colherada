@@ -6,4 +6,175 @@
     android:layout_height="match_parent"
     tools:context=".MainMeusDados">
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ondacima" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/lato"
+        android:text="MEUS DADOS"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cdviewImgUser"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgUser"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            tools:srcCompat="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/btnMenu"
+        android:layout_width="40dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu" />
+
+    <EditText
+        android:id="@+id/edtxtNome"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="30dp"
+        android:autofillHints="Nom"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:textColorHint="#70000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cdviewImgUser" />
+
+    <EditText
+        android:id="@+id/edtxtEmail"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="30dp"
+        android:autofillHints="Nom"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:textColorHint="#70000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtxtNome" />
+
+    <EditText
+        android:id="@+id/edtxtSenha"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="30dp"
+        android:autofillHints="Nom"
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:hint="Senha"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:textColorHint="#70000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.266"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtxtEmail" />
+
+    <Button
+        android:id="@+id/btnCalorias"
+        android:layout_width="139dp"
+        android:layout_height="74dp"
+        android:backgroundTint="#C4C4C4"
+        android:fontFamily="@font/lato"
+        android:gravity="center"
+        android:text="Calorias"
+        android:textAlignment="center"
+        android:textColor="#0E0E0E"
+        app:icon="@drawable/fogo"
+        app:iconGravity="top"
+        app:iconPadding="3dp"
+        app:iconSize="30dp"
+        app:iconTint="#FF0E0E0E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnReceitas"
+        android:layout_width="139dp"
+        android:layout_height="74dp"
+        android:backgroundTint="#C4C4C4"
+        android:fontFamily="@font/lato"
+        android:gravity="center"
+        android:text="Receitas"
+        android:textAlignment="center"
+        android:textColor="#0E0E0E"
+        app:icon="@drawable/receitas"
+        app:iconGravity="top"
+        app:iconPadding="6dp"
+        app:iconSize="30dp"
+        app:iconTint="#FF0E0E0E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnHome"
+        android:layout_width="139dp"
+        android:layout_height="74dp"
+        android:backgroundTint="#C4C4C4"
+        android:fontFamily="@font/lato"
+        android:gravity="center"
+        android:text="Home"
+        android:textAlignment="center"
+        android:textColor="#0E0E0E"
+        app:icon="@drawable/home"
+        app:iconGravity="top"
+        app:iconPadding="6dp"
+        app:iconSize="30dp"
+        app:iconTint="#FF0E0E0E"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnCalorias"/>
+    <Button
+        android:id="@+id/btnSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/lato"
+        android:padding="10dp"
+        android:text="SALVAR"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtxtSenha" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
