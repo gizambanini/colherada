@@ -13,6 +13,7 @@
         android:id="@+id/btnHome3"
         android:layout_width="139dp"
         android:layout_height="74dp"
+        android:layout_marginEnd="4dp"
         android:backgroundTint="#C4C4C4"
         android:fontFamily="@font/lato"
         android:gravity="center"
@@ -71,9 +72,10 @@
         android:id="@+id/btnMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="15dp"
         android:backgroundTint="#FFFFFF"
         android:contentDescription="menu"
+        app:layout_constraintEnd_toStartOf="@+id/edTxtPesq"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_menu_24"
@@ -81,9 +83,9 @@
 
     <EditText
         android:id="@+id/edTxtPesq"
-        android:layout_width="280dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:background="#B3B3B3"
         android:backgroundTint="#E6E6E6"
         android:drawableLeft="@drawable/ic_baseline_search_24"
@@ -94,20 +96,19 @@
         android:paddingLeft="10dp"
         app:circularflow_defaultRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btnFiltro"
-        android:layout_width="66dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="#FFFFFF"
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="55dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="#3BFF9800"
         android:contentDescription="filtro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_filter_alt_24" />
+        app:layout_constraintStart_toEndOf="@+id/edTxtPesq"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"

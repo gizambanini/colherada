@@ -15,17 +15,17 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainMeusDados extends AppCompatActivity {
 
-    CardView cdviewImgUser;
+    /*CardView cdviewImgUser;
     ImageView imgUser;
     ImageButton btnMenu;
     Button btnReceitas, btnHome, btnCalorias, btnSalvar;
-    EditText edtxtNome, edtxtEmail, edtxtSenha;
+    EditText edtxtNome, edtxtEmail, edtxtSenha;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_meus_dados);
-        btnCalorias = (Button) findViewById(R.id.btnCalorias);
+        /*btnCalorias = (Button) findViewById(R.id.btnCalorias);
         btnReceitas = (Button) findViewById(R.id.btnReceitas);
         btnHome = (Button) findViewById(R.id.btnHome);
         btnMenu = (ImageButton) findViewById(R.id.btnMenu);
@@ -79,7 +79,7 @@ public class MainMeusDados extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });
+        });*/
 
     }
 }

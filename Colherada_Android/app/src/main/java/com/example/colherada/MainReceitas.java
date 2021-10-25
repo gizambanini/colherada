@@ -5,17 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.Spinner;
 import android.widget.Toast;
-
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import android.widget.Toast;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainReceitas extends AppCompatActivity {
+public class MainReceitas extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     Button btnHome, btnCalorias;
     private GridView receitaGridView;
     private GridViewViewAdapter adapter;
@@ -26,6 +30,13 @@ public class MainReceitas extends AppCompatActivity {
         setContentView(R.layout.activity_main_receitas);
         btnHome = (Button) findViewById(R.id.btnHome3);
         btnCalorias = (Button) findViewById(R.id.btnCalorias3);
+
+        // filtro
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.filtro_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,5 +92,15 @@ public class MainReceitas extends AppCompatActivity {
         receitaGridView.setAdapter(adapter);
     }
 
+    @Override // filtro
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        String txt = adapterView.getItemAtPosition(i).toString();
+        Toast.makeText(adapterView.getContext(),txt,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override // filtro
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
 
 }
