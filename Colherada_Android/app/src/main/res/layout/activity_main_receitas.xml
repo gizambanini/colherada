@@ -13,7 +13,6 @@
         android:id="@+id/btnHome3"
         android:layout_width="139dp"
         android:layout_height="74dp"
-        android:layout_marginEnd="4dp"
         android:backgroundTint="#C4C4C4"
         android:fontFamily="@font/lato"
         android:gravity="center"
@@ -138,154 +137,13 @@
         app:srcCompat="@drawable/receitas_img"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView8">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/imgViewReceita1"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/suco" />
-
-            <TextView
-                android:id="@+id/tvNomeReceita1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imgViewReceita1"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/lato"
-                android:text="Suco de Limão"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="10dp"
+    <GridView
+        android:id="@+id/receitaGridView"
+        android:layout_width="409dp"
+        android:layout_height="552dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView7">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/imgViewReceita2"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/suco" />
-
-            <TextView
-                android:id="@+id/tvNomeReceita2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imgViewReceita2"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/lato"
-                android:text="Suco de Limão"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView7"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton4">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/imgViewReceita3"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/suco" />
-
-            <TextView
-                android:id="@+id/tvNomeReceita3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imgViewReceita3"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/lato"
-                android:text="Suco de Limão"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView8"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton4">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/imgViewReceita4"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/suco" />
-
-            <TextView
-                android:id="@+id/tvNomeReceita4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imgViewReceita4"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/lato"
-                android:text="Suco de Limão"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
