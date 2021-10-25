@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button btnCalorias, btnReceitas;
+    ImageButton btnMenu3;
     CardView cardView1, cardView2, cardView3;
     TextView tvImg1, tvImg2, tvImg3;
 
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btnCalorias = (Button) findViewById(R.id.btnCalorias);
         btnReceitas = (Button) findViewById(R.id.btnReceitas);
+        btnMenu3 = (ImageButton) findViewById(R.id.btnMenu3);
         cardView1 = (CardView) findViewById(R.id.CardView1);
         cardView2 = (CardView) findViewById(R.id.CardView2);
         cardView3 = (CardView) findViewById(R.id.CardView3);
@@ -93,6 +96,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,MainReceitas.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        btnMenu3.setOnClickListener (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,MainMeusDados.class);
                 startActivity(intent);
                 finish();
             }

@@ -33,11 +33,12 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cdviewImgUser"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         android:layout_marginTop="100dp"
-        app:cardCornerRadius="100dp"
-        app:cardElevation="10dp"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:cardCornerRadius="80dp"
+        app:cardElevation="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -46,8 +47,10 @@
             android:id="@+id/imgUser"
             android:layout_width="160dp"
             android:layout_height="160dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/suco" />
     </androidx.cardview.widget.CardView>
+
 
     <ImageView
         android:id="@+id/btnMenu"
@@ -125,7 +128,8 @@
         app:iconSize="30dp"
         app:iconTint="#FF0E0E0E"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnHome" />
 
     <Button
         android:id="@+id/btnReceitas"
@@ -143,6 +147,7 @@
         app:iconSize="30dp"
         app:iconTint="#FF0E0E0E"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnHome"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -161,7 +166,8 @@
         app:iconSize="30dp"
         app:iconTint="#FF0E0E0E"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnCalorias"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
     <Button
         android:id="@+id/btnSalvar"
         android:layout_width="wrap_content"

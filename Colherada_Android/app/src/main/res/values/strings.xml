@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Colherada</string>
+    <string-array name="filtro_array">
+        <item>Fitness</item>
+        <item>Doces</item>
+        <item>Sucos</item>
+        <item>Fácil</item>
+        <item>Bolos</item>
+        <item>Massas</item>
+    </string-array>
 </resources>
