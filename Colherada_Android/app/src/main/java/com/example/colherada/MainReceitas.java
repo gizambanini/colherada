@@ -74,7 +74,6 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
                     Toast.makeText(MainReceitas.this, errorMessage, Toast.LENGTH_LONG).show();
                     Toast.makeText(MainReceitas.this, "entrou no else do response", Toast.LENGTH_LONG).show();
                 }
-
             }
 
             @Override

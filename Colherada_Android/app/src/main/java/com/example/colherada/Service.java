@@ -12,10 +12,10 @@ import retrofit2.http.Path;
 
 interface Service {
 
-    @GET("/api/Receitas")
+    @GET("/api/Receitas/")
     Call<List<Receitas>> getReceita();
 
-    @POST("/api/Receitas")
+    @POST("/api/Receitas/")
     Call<Receitas> incluirReceita(@Body Receitas receitas);
 
 }
