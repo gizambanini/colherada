@@ -26,7 +26,7 @@ namespace Colherada_API.Controllers
                 return _context.ReceitaFiltro.ToList(); 
             } 
 
-            //Método GET / Com o email passado
+            //Método GET / Com o nome do filtro
             [HttpGet ("{filtro}")]
             public ActionResult<List<Receitas>> GetReceitaByFiltro(string filtro) 
             {

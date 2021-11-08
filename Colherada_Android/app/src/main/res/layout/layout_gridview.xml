@@ -1,34 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="200dp"
+    android:layout_height="160dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     app:cardElevation="5dp"
-    android:layout_margin="5dp"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="#3BFF9800"
     app:cardCornerRadius="15dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        
         <ImageView
             android:id="@+id/imagemReceita"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:padding="10dp" />
+            android:layout_width="199dp"
+            android:layout_height="120dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"/>
 
         <TextView
             android:id="@+id/tvNome"
+            android:backgroundTint="#3BFF9800"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textColor="@color/black"
+            android:paddingTop="10dp"
             android:layout_below="@+id/imagemReceita"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:layout_centerInParent="true"/>
-
-
+        
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

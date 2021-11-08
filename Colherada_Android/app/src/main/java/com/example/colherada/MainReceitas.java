@@ -11,6 +11,7 @@ import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import java.util.List;
@@ -23,12 +24,14 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
     Button btnHome, btnCalorias;
     private GridView receitaGridView;
     private GridViewViewAdapter adapter;
+    ImageButton imgBtnMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_receitas);
         btnHome = (Button) findViewById(R.id.btnHome3);
+        imgBtnMenu = (ImageButton) findViewById(R.id.btnMenu);
         btnCalorias = (Button) findViewById(R.id.btnCalorias3);
 
         // filtro
@@ -37,6 +40,15 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
+        imgBtnMenu.setOnClickListener ( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainReceitas.this,MainMinhasReceitas.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override

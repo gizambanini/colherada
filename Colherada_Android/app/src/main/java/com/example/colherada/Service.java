@@ -18,4 +18,6 @@ interface Service {
     @POST("/api/Receitas/")
     Call<Receitas> incluirReceita(@Body Receitas receitas);
 
+
+
 }
