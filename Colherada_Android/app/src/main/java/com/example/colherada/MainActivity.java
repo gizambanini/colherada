@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         btnHome.setOnClickListener ( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MainCriarConta.class);
+                Intent intent = new Intent(MainActivity.this,MainReceitasSelecionadas.class);
                 startActivity(intent);
                 finish();
             }

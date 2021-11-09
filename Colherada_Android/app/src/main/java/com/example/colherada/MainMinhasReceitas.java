@@ -48,6 +48,8 @@ public class MainMinhasReceitas extends AppCompatActivity {
 
             }
         });
+
+        /*
         //Download JSON via Retrofit
         Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
         //Pegar a rota do Json
@@ -79,7 +81,7 @@ public class MainMinhasReceitas extends AppCompatActivity {
     private void populateGridView(List<Receitas> listaReceita){
         receitaGridView = (GridView) findViewById(R.id.receitaGridView);
         adapter = new GridViewViewAdapter(this,listaReceita);
-        receitaGridView.setAdapter(adapter);
+        receitaGridView.setAdapter(adapter);*/
     }
 
 }
