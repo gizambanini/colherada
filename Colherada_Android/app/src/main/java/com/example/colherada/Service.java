@@ -18,6 +18,7 @@ interface Service {
     @POST("/api/Receitas/")
     Call<Receitas> incluirReceita(@Body Receitas receitas);
 
-
+    @GET("/api/usuario/{email}")
+    Call<Usuarios> getUsuarioByEmail(@Path("email") String email);
 
 }

@@ -9,15 +9,18 @@ public class Usuarios implements Serializable{
     private Integer id;
     @SerializedName("nome")
     private String nome;
+    @SerializedName("email")
+    private String email;
     @SerializedName("senha")
     private String senha;
     @SerializedName("foto")
     private String foto;
 
-    public Usuarios(Integer id, String nome,String senha,String foto){
+    public Usuarios(Integer id, String nome,String email,String senha,String foto){
 
         this.id = id;
         this.nome = nome;
+        this.nome = email;
         this.senha = senha;
         this.foto = foto;
     }
@@ -37,6 +40,14 @@ public class Usuarios implements Serializable{
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
