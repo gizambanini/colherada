@@ -25,9 +25,9 @@ namespace Colherada_API.Controllers
             return _context.ReceitaSalva.ToList(); 
         } 
 
-        //Método GET / Com o email passado
+        //Método GET / Com o id passado
         [HttpGet ("{UsuarioId}")]
-        public ActionResult<List<ReceitasSalvasUser>> GetEmail(int UsuarioId) 
+        public ActionResult<List<ReceitasSalvasUser>> GetReceitasSalvas(int UsuarioId) 
         {
             try
             {

@@ -3,6 +3,8 @@ package com.example.colherada;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.squareup.picasso.Picasso;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,44 +17,60 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainMeusDados extends AppCompatActivity {
 
-    /*CardView cdviewImgUser;
+    //CardView cdviewImgUser;
     ImageView imgUser;
     ImageButton btnMenu;
     Button btnReceitas, btnHome, btnCalorias, btnSalvar;
-    EditText edtxtNome, edtxtEmail, edtxtSenha;*/
+    EditText edtxtNome, edtxtEmail, edtxtSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_meus_dados);
-        /*btnCalorias = (Button) findViewById(R.id.btnCalorias);
+        btnCalorias = (Button) findViewById(R.id.btnCalorias);
         btnReceitas = (Button) findViewById(R.id.btnReceitas);
         btnHome = (Button) findViewById(R.id.btnHome);
-        btnMenu = (ImageButton) findViewById(R.id.btnMenu);
-        cdviewImgUser = (CardView) findViewById(R.id.cdviewImgUser);
+        //btnMenu = (ImageButton) findViewById(R.id.btnMenu);
+        //cdviewImgUser = (CardView) findViewById(R.id.cdviewImgUser);
         imgUser = (ImageView) findViewById(R.id.imgUser);
         edtxtNome = (EditText) findViewById(R.id.edtxtNome);
         edtxtEmail = (EditText) findViewById(R.id.edtxtEmail);
         edtxtSenha = (EditText) findViewById(R.id.edtxtSenha);
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
 
-        cdviewImgUser.setOnClickListener(new View.OnClickListener() {
+
+        Intent intent = getIntent();
+        Usuarios user = (Usuarios) intent.getSerializableExtra("userSerializable");
+        if(user != null){
+            edtxtNome.setText(user.getNome());
+            edtxtEmail.setText(user.getEmail());
+            edtxtSenha.setText(user.getSenha());
+            if((user.getFoto() != null) && (user.getFoto().length()>0)){
+                Picasso.get().load(user.getFoto()).into(imgUser);
+            }
+            else
+            {
+                Picasso.get().load(R.drawable.user).into(imgUser);
+            }
+        }
+
+        /*cdviewImgUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Trocar de foto
             }
-        });
+        });*/
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edtxtNome.getText().toString() == "" && edtxtEmail .getText().toString() == ""
+               /* if(edtxtNome.getText().toString() == "" && edtxtEmail .getText().toString() == ""
                         && edtxtSenha.getText().toString() == ""){
 
                     Snackbar.make(view,"Preencha todos os campos!", Snackbar.LENGTH_SHORT).show();
                 }else{
                     // Atualizar dados aqui ....
-                }
+                }*/
             }
         });
 
@@ -79,7 +97,7 @@ public class MainMeusDados extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });*/
+        });
 
     }
 }

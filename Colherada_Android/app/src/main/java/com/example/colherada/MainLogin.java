@@ -2,13 +2,14 @@ package com.example.colherada;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import java.io.Serializable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -16,15 +17,16 @@ import retrofit2.Response;
 public class MainLogin extends AppCompatActivity {
     Button btnEntrar, btnCriarConta;
     EditText edtEmail, edtSenha;
-
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_login);
         btnEntrar = (Button)findViewById(R.id.btnEntrar);
+
         btnCriarConta = (Button)findViewById(R.id.btnCriarConta);
         edtEmail = (EditText)findViewById(R.id.edtEmail);
-        edtSenha = (EditText)findViewById(R.id.edtxtSenha);
+        edtSenha = (EditText)findViewById(R.id.edtSenha);
 
         btnCriarConta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,18 +40,18 @@ public class MainLogin extends AppCompatActivity {
         btnEntrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-                login();
+                login(MainLogin.this);
             }
         });
 
     }
 
     //Método para login
-    private void login() {
+    private void login(Context esseContext) {
 
         String strEmail = edtEmail.getText().toString();
         String strSenha = edtSenha.getText().toString();
-
+        this.context = esseContext;
         Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
         Call<Usuarios> call = service.getUsuarioByEmail(strEmail);
 
@@ -57,9 +59,22 @@ public class MainLogin extends AppCompatActivity {
             @Override
             public void onResponse(Call<Usuarios> call, Response<Usuarios> response) {
                 if (response.isSuccessful()) {
-                    // pegar o response.body().email ? e comparar com o que digitamos
-                    // se for igual a gnt vê a senha
-                    // se td bater a gnt leva o id do usuário ou email para as outras telas
+                   if(response.body().getSenha() != null) {
+                        if (response.body().getSenha().equals(strSenha)) {
+
+                            Usuarios objUser = new Usuarios(response.body().getId(), response.body().getNome(), strEmail, strSenha, response.body().getFoto());
+                            Intent intent = new Intent(context, MainMeusDados.class);
+                            intent.putExtra("userSerializable", objUser);
+                            context.startActivity(intent);
+
+                            // MUDAR PARA LEVAR PRA HOME
+                        }
+                    }
+                    else {
+                        String errorMessage = "[ERROR] Dados incorretos!";
+                        Toast.makeText(MainLogin.this, errorMessage, Toast.LENGTH_LONG).show();
+                    }
+
                 } else {
                     String errorMessage = "[ERROR] Dados incorretos!";
                     Toast.makeText(MainLogin.this, errorMessage, Toast.LENGTH_LONG).show();
