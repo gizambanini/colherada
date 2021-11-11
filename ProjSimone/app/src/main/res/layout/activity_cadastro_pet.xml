@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CadastroPetActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:text="Cadastro do Pet"
+        android:textSize="24dp"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/edtId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="id pet"
+        android:minHeight="48dp"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/edtNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="nome pet"
+        android:minHeight="48dp"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/edtRaca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="raça pet"
+        android:minHeight="48dp"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/edtImagem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="link imagem"
+        android:minHeight="48dp"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/btnIncluir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Incluir"
+        android:backgroundTint="@android:color/darker_gray"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btnAlterar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alterar"
+        android:backgroundTint="@android:color/darker_gray"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btnExcluir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Excluir"
+        android:backgroundTint="@android:color/darker_gray"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btnLimpar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Limpar"
+        android:backgroundTint="@android:color/darker_gray"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:textStyle="bold"/>
+
+
+
+
+</LinearLayout>
