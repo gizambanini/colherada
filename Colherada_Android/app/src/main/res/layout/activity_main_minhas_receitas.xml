@@ -1,108 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/drawer_layout"
     tools:context=".MainMinhasReceitas">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:fontFamily="@font/lato"
-        android:includeFontPadding="false"
-        android:text="RECEITAS  SALVAS"
-        android:textAllCaps="false"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.465"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/main_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    >
+                </androidx.appcompat.widget.Toolbar>
+            </com.google.android.material.appbar.AppBarLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/btnMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="menu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_menu_24"
-        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="80dp"
+                    android:fontFamily="@font/lato"
+                    android:includeFontPadding="false"
+                    android:text="RECEITAS  SALVAS"
+                    android:textAllCaps="false"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.465"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnCalorias"
-        android:layout_width="139dp"
-        android:layout_height="74dp"
-        android:backgroundTint="#C4C4C4"
-        android:fontFamily="@font/lato"
-        android:gravity="center"
-        android:text="Calorias"
-        android:textAlignment="center"
-        android:textColor="#0E0E0E"
-        app:icon="@drawable/fogo"
-        app:iconGravity="top"
-        app:iconPadding="3dp"
-        app:iconSize="30dp"
-        app:iconTint="#FF0E0E0E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnHome" />
+                <Button
+                    android:id="@+id/btnCalorias"
+                    android:layout_width="139dp"
+                    android:layout_height="74dp"
+                    android:backgroundTint="#C4C4C4"
+                    android:fontFamily="@font/lato"
+                    android:gravity="center"
+                    android:text="Calorias"
+                    android:textAlignment="center"
+                    android:textColor="#0E0E0E"
+                    app:icon="@drawable/fogo"
+                    app:iconGravity="top"
+                    app:iconPadding="3dp"
+                    app:iconSize="30dp"
+                    app:iconTint="#FF0E0E0E"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/btnHome" />
 
 
-    <Button
-        android:id="@+id/btnHome"
-        android:layout_width="139dp"
-        android:layout_height="74dp"
-        android:backgroundTint="#C4C4C4"
-        android:fontFamily="@font/lato"
-        android:gravity="center"
-        android:text="Home"
-        android:textAlignment="center"
-        android:textColor="#0E0E0E"
-        app:icon="@drawable/home"
-        app:iconGravity="top"
-        app:iconPadding="6dp"
-        app:iconSize="30dp"
-        app:iconTint="#FF0E0E0E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnCalorias"
-        app:layout_constraintStart_toEndOf="@+id/btnReceitas" />
+                <Button
+                    android:id="@+id/btnHome"
+                    android:layout_width="139dp"
+                    android:layout_height="74dp"
+                    android:backgroundTint="#C4C4C4"
+                    android:fontFamily="@font/lato"
+                    android:gravity="center"
+                    android:text="Home"
+                    android:textAlignment="center"
+                    android:textColor="#0E0E0E"
+                    app:icon="@drawable/home"
+                    app:iconGravity="top"
+                    app:iconPadding="6dp"
+                    app:iconSize="30dp"
+                    app:iconTint="#FF0E0E0E"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnCalorias"
+                    app:layout_constraintStart_toEndOf="@+id/btnReceitas" />
 
-    <Button
-        android:id="@+id/btnReceitas"
-        android:layout_width="139dp"
-        android:layout_height="74dp"
-        android:backgroundTint="#C4C4C4"
-        android:fontFamily="@font/lato"
-        android:gravity="center"
-        android:text="Receitas"
-        android:textAlignment="center"
-        android:textColor="#0E0E0E"
-        app:icon="@drawable/receitas"
-        app:iconGravity="top"
-        app:iconPadding="6dp"
-        app:iconSize="30dp"
-        app:iconTint="#FF0E0E0E"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnHome"
-        app:layout_constraintStart_toStartOf="parent" />
+                <Button
+                    android:id="@+id/btnReceitas"
+                    android:layout_width="139dp"
+                    android:layout_height="74dp"
+                    android:backgroundTint="#C4C4C4"
+                    android:fontFamily="@font/lato"
+                    android:gravity="center"
+                    android:text="Receitas"
+                    android:textAlignment="center"
+                    android:textColor="#0E0E0E"
+                    app:icon="@drawable/receitas"
+                    app:iconGravity="top"
+                    app:iconPadding="6dp"
+                    app:iconSize="30dp"
+                    app:iconTint="#FF0E0E0E"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnHome"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-    <GridView
-        android:id="@+id/receitaGridView"
-        android:layout_width="409dp"
-        android:layout_height="552dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:horizontalSpacing="13dp"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCalorias"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+                <GridView
+                    android:id="@+id/receitaGridView"
+                    android:layout_width="409dp"
+                    android:layout_height="552dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:horizontalSpacing="13dp"
+                    android:numColumns="auto_fit"
+                    android:verticalSpacing="10dp"
+                    app:layout_constraintBottom_toTopOf="@+id/btnCalorias"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:menu="@menu/nav_menu"
+            android:id="@+id/nav_view"
+            android:layout_gravity="start">
+        </com.google.android.material.navigation.NavigationView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
