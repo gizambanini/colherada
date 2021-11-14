@@ -1,22 +1,31 @@
 package com.example.colherada;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainCalorias extends AppCompatActivity {
+public class MainCalorias extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button btnCalcular, btnHome, btnReceitas;
     EditText edtPeso, edtIdade;
     TextView txtRes;
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +36,21 @@ public class MainCalorias extends AppCompatActivity {
         edtPeso = (EditText) findViewById(R.id.edtPeso);
         edtIdade = (EditText) findViewById(R.id.edtIdade);
         txtRes = (TextView) findViewById(R.id.txtResposta);
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
 
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.openNavDrawer,
+                R.string.closeNavDrawer
+        );
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
@@ -59,5 +82,26 @@ public class MainCalorias extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        String str = item.toString();
+        if(str.equals("Receitas Salvas")){
+            Intent intent = new Intent(MainCalorias.this,MainMinhasReceitas.class);
+            startActivity(intent);
+            finish();
+        }
+        else if(str.equals("Criar Receita")){
+            Intent intent = new Intent(MainCalorias.this,CriarReceita.class);
+            startActivity(intent);
+            finish();
+        }
+        else if(str.equals("Entrar")){
+            Intent intent = new Intent(MainCalorias.this,MainLogin.class);
+            startActivity(intent);
+            finish();
+        }
+        return false;
     }
 }

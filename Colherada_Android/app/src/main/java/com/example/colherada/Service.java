@@ -13,12 +13,17 @@ import retrofit2.http.Path;
 interface Service {
 
     @GET("/api/Receitas/")
-    Call<List<Receitas>> getReceita();
+    Call<List<Receitas>> getReceita(); //Pegar TDS as receitas
 
     @POST("/api/Receitas/")
-    Call<Receitas> incluirReceita(@Body Receitas receitas);
+    Call<Receitas> incluirReceita(@Body Receitas receitas);  //Criar nova receita
 
     @GET("/api/usuario/{email}")
-    Call<Usuarios> getUsuarioByEmail(@Path("email") String email);
+    Call<Usuarios> getUsuarioByEmail(@Path("email") String email); //Login
+
+    @POST("/api/usuario/")
+    Call<Usuarios> criarUsuario(@Body Usuarios userNovo);  //Criar novo usuário
+
+
 
 }

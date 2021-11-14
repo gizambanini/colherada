@@ -1,12 +1,18 @@
 package com.example.colherada;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,14 +21,16 @@ import android.widget.ImageView;
 
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainMeusDados extends AppCompatActivity {
+public class MainMeusDados extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     //CardView cdviewImgUser;
     ImageView imgUser;
     ImageButton btnMenu;
     Button btnReceitas, btnHome, btnCalorias, btnSalvar;
     EditText edtxtNome, edtxtEmail, edtxtSenha;
-
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +45,21 @@ public class MainMeusDados extends AppCompatActivity {
         edtxtEmail = (EditText) findViewById(R.id.edtxtEmail);
         edtxtSenha = (EditText) findViewById(R.id.edtxtSenha);
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
 
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.openNavDrawer,
+                R.string.closeNavDrawer
+        );
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
 
         Intent intent = getIntent();
         Usuarios user = (Usuarios) intent.getSerializableExtra("userSerializable");
@@ -99,5 +121,26 @@ public class MainMeusDados extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        String str = item.toString();
+        if(str.equals("Receitas Salvas")){
+            Intent intent = new Intent(MainMeusDados.this,MainMinhasReceitas.class);
+            startActivity(intent);
+            finish();
+        }
+        else if(str.equals("Criar Receita")){
+            Intent intent = new Intent(MainMeusDados.this,CriarReceita.class);
+            startActivity(intent);
+            finish();
+        }
+        else if(str.equals("Entrar")){
+            Intent intent = new Intent(MainMeusDados.this,MainLogin.class);
+            startActivity(intent);
+            finish();
+        }
+        return false;
     }
 }

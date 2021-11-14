@@ -1,19 +1,30 @@
 package com.example.colherada;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.android.material.navigation.NavigationView;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Button btnHome, btnCalorias, btnReceitas;
     CardView cardView1, cardView2, cardView3;
     TextView tvImg1, tvImg2, tvImg3;
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +39,21 @@ public class MainActivity extends AppCompatActivity {
         tvImg1 = (TextView) findViewById(R.id.tvImg1);
         tvImg2 = (TextView) findViewById(R.id.tvImg2);
         tvImg3 = (TextView) findViewById(R.id.tvImg3);
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.openNavDrawer,
+                R.string.closeNavDrawer
+        );
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
 
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,5 +132,38 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        //Toast.makeText(MainActivity.this, item.toString(), Toast.LENGTH_SHORT).show();
+        String str = item.toString();
+        if(str.equals("Receitas Salvas")){
+            //Toast.makeText(MainActivity.this, "SALVAS", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(MainActivity.this,MainMinhasReceitas.class);
+            startActivity(intent);
+            finish();
+        }
+        else if(str.equals("Criar Receita")){
+            //Toast.makeText(MainActivity.this, "criar", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(MainActivity.this,CriarReceita.class);
+            startActivity(intent);
+            finish();
+        }
+        else if(str.equals("Entrar")){
+            //Toast.makeText(MainActivity.this, "entrar", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(MainActivity.this,MainLogin.class);
+            startActivity(intent);
+            finish();
+        }
+        return false;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

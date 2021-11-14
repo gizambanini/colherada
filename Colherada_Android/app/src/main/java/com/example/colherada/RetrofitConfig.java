@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 class RetrofitConfig   {
 
-    private static final String BASE_URL = "http://10.0.2.2:5000/"; // colocar /Receitas
+    private static final String BASE_URL = "http://10.0.2.2:5000/"; // colocar /Receitas10.0.2.2
 
     private static Retrofit retrofit;
 

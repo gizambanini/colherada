@@ -1,9 +1,14 @@
 package com.example.colherada;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,26 +19,45 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainReceitas extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class MainReceitas extends AppCompatActivity implements AdapterView.OnItemSelectedListener, NavigationView.OnNavigationItemSelectedListener {
     Button btnHome, btnCalorias;
     private GridView receitaGridView;
     private GridViewViewAdapter adapter;
-    ImageButton imgBtnMenu;
-
+    //ImageButton imgBtnMenu;
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_receitas);
         btnHome = (Button) findViewById(R.id.btnHome3);
-        imgBtnMenu = (ImageButton) findViewById(R.id.btnMenu);
+        //imgBtnMenu = (ImageButton) findViewById(R.id.btnMenu);
         btnCalorias = (Button) findViewById(R.id.btnCalorias3);
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
 
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                toolbar,
+                R.string.openNavDrawer,
+                R.string.closeNavDrawer
+        );
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
         // filtro
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.filtro_array, android.R.layout.simple_spinner_item);
@@ -41,14 +65,14 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        imgBtnMenu.setOnClickListener ( new View.OnClickListener() {
+        /*imgBtnMenu.setOnClickListener ( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainReceitas.this,MainMinhasReceitas.class);
                 startActivity(intent);
                 finish();
             }
-        });
+        });*/
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,4 +138,26 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        String str = item.toString();
+        Toast.makeText(MainReceitas.this, item.toString(), Toast.LENGTH_SHORT).show();
+
+        if(str.equals("Receitas Salvas")){
+            Intent intent = new Intent(MainReceitas.this,MainMinhasReceitas.class);
+            startActivity(intent);
+            finish();
+        }
+        else if(str.equals("Criar Receita")){
+            Intent intent = new Intent(MainReceitas.this,CriarReceita.class);
+            startActivity(intent);
+            finish();
+        }
+        else if(str.equals("Entrar")){
+            Intent intent = new Intent(MainReceitas.this,MainLogin.class);
+            startActivity(intent);
+            finish();
+        }
+        return false;
+    }
 }

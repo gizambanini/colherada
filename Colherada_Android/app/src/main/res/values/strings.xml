@@ -8,4 +8,6 @@
         <item>Bolos</item>
         <item>Massas</item>
     </string-array>
+    <string name="openNavDrawer"></string>
+    <string name="closeNavDrawer"></string>
 </resources>
