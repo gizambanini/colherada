@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -19,6 +21,8 @@ public class MainReceitasSelecionadas extends AppCompatActivity implements Navig
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    private Context context;
+    Usuarios user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,14 +45,16 @@ public class MainReceitasSelecionadas extends AppCompatActivity implements Navig
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        this.context = MainReceitasSelecionadas.this; //***********************************************************
+        Intent intent = getIntent();
+        user = (Usuarios) intent.getSerializableExtra("userSerializable");
         btnCalorias.setOnClickListener ( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainReceitasSelecionadas.this,MainCalorias.class);
-
-                startActivity(intent);
-
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
             }
         });
 
@@ -57,8 +63,8 @@ public class MainReceitasSelecionadas extends AppCompatActivity implements Navig
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainReceitasSelecionadas.this,MainActivity.class);
-
-                startActivity(intent);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
 
             }
         });
@@ -68,8 +74,8 @@ public class MainReceitasSelecionadas extends AppCompatActivity implements Navig
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainReceitasSelecionadas.this,MainReceitas.class);
-
-                startActivity(intent);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
 
             }
         });
@@ -78,20 +84,32 @@ public class MainReceitasSelecionadas extends AppCompatActivity implements Navig
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         String str = item.toString();
-        if(str.equals("Receitas Salvas")){
-            Intent intent = new Intent(MainReceitasSelecionadas.this,MainMinhasReceitas.class);
-            startActivity(intent);
-            finish();
+        if(user != null)
+        {
+            if(str.equals("Receitas Salvas")){
+                Intent intent = new Intent(MainReceitasSelecionadas.this,MainMinhasReceitas.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+            }
+            else if(str.equals("Criar Receita")){
+                Intent intent = new Intent(MainReceitasSelecionadas.this,CriarReceita.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+            }
+            else if(str.equals("Meus dados")){
+                Intent intent = new Intent(MainReceitasSelecionadas.this,MainMeusDados.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+            }
         }
-        else if(str.equals("Criar Receita")){
-            Intent intent = new Intent(MainReceitasSelecionadas.this,CriarReceita.class);
-            startActivity(intent);
-            finish();
-        }
-        else if(str.equals("Entrar")){
+        if(str.equals("Entrar")){
             Intent intent = new Intent(MainReceitasSelecionadas.this,MainLogin.class);
-            startActivity(intent);
-            finish();
+            intent.putExtra("userSerializable", user);
+            context.startActivity(intent);
+        }
+        else if(str.equals("Meus dados") || str.equals("Criar Receita") ||str.equals("Receitas Salvas")){
+            if(user == null)
+                Toast.makeText(MainReceitasSelecionadas.this, "[ERROR] Faça seu login para acessar essas telas!", Toast.LENGTH_SHORT).show();
         }
         return false;
     }

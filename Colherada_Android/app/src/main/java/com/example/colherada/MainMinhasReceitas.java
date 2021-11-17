@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -24,18 +24,21 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainMinhasReceitas extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    Button btnCalorias, btnHome;
+    Button btnCalorias, btnHome, btnReceitas;
     private GridView receitaGridView;
     private GridViewViewAdapter adapter;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    Context context;
+    Usuarios user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_minhas_receitas);
         btnCalorias = (Button) findViewById(R.id.btnCalorias);
         btnHome = (Button) findViewById(R.id.btnHome);
+        btnReceitas = (Button) findViewById(R.id.btnReceitas);
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -51,13 +54,26 @@ public class MainMinhasReceitas extends AppCompatActivity implements NavigationV
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        this.context = MainMinhasReceitas.this; //***********************************************************
+        Intent intent = getIntent();
+        user = (Usuarios) intent.getSerializableExtra("userSerializable");
+        btnReceitas.setOnClickListener ( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainMinhasReceitas.this,MainReceitas.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+
+            }
+        });
         btnCalorias.setOnClickListener ( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainMinhasReceitas.this,MainCalorias.class);
-
-                startActivity(intent);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
 
             }
         });
@@ -67,24 +83,35 @@ public class MainMinhasReceitas extends AppCompatActivity implements NavigationV
             public void onClick(View v) {
 
                 Intent intent = new Intent(MainMinhasReceitas.this,MainActivity.class);
-
-                startActivity(intent);
-
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
             }
         });
 
-        /*
+
         //Download JSON via Retrofit
         Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
         //Pegar a rota do Json
-        Call<List<Receitas>> call = service.getReceita();
-        call.enqueue(new Callback<List<Receitas>>() {
+        Call<List<ReceitaSalva>> call = service.getReceitaSalvaByIdUser(user.getId());
+        call.enqueue(new Callback<List<ReceitaSalva>>() {
             @Override
-            public void onResponse(Call<List<Receitas>> call, Response<List<Receitas>> response) {
+            public void onResponse(Call<List<ReceitaSalva>> call, Response<List<ReceitaSalva>> response) {
 
                 if(response.isSuccessful()){
                     Toast.makeText(MainMinhasReceitas.this, "deu certo", Toast.LENGTH_LONG).show();
-                    populateGridView(response.body());
+                    //populateGridView(response.body());
+                    //Ir dado por dado e ir pegando o idReceita, levar para o getReceitaById(),
+
+                    // Adicionar essa receita em uma lista de receitas e usar no GridViewAdapter
+                    // criar List<Receitas>
+                    // <List<Receitas>> receitasSalvas = new <List<Receitas>>
+                    // while(response nn acabou)
+                        // pegar o idReceitas do response e pegar os dados da receitas por getReceitaById()
+                        // Receitas essaReceita = service.getReceitaById(response.id);
+                        // receitasSalvas.Add(essaReceita)
+
+                    // populateGridView(receitasSalvas);
+
                 }else{
                     String errorMessage = response.errorBody().toString();
                     Toast.makeText(MainMinhasReceitas.this, errorMessage, Toast.LENGTH_LONG).show();
@@ -94,7 +121,7 @@ public class MainMinhasReceitas extends AppCompatActivity implements NavigationV
             }
 
             @Override
-            public void onFailure(Call<List<Receitas>> call, Throwable t) {
+            public void onFailure(Call<List<ReceitaSalva>> call, Throwable t) {
                 String messageProblem = t.getMessage().toString();
                 Toast.makeText(MainMinhasReceitas.this, messageProblem, Toast.LENGTH_SHORT).show();
                 Toast.makeText(MainMinhasReceitas.this, "entrou no else do Failure", Toast.LENGTH_LONG).show();
@@ -102,29 +129,41 @@ public class MainMinhasReceitas extends AppCompatActivity implements NavigationV
         });
     }
 
-    private void populateGridView(List<Receitas> listaReceita){
+    private void populateGridView(List<Receitas> listaReceitaSalva){
         receitaGridView = (GridView) findViewById(R.id.receitaGridView);
-        adapter = new GridViewViewAdapter(this,listaReceita);
-        receitaGridView.setAdapter(adapter);*/
+        adapter = new GridViewViewAdapter(this,listaReceitaSalva);
+        receitaGridView.setAdapter(adapter);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         String str = item.toString();
-        if(str.equals("Receitas Salvas")){
-            Intent intent = new Intent(MainMinhasReceitas.this,MainMinhasReceitas.class);
-            startActivity(intent);
-            finish();
+        if(user != null)
+        {
+            if(str.equals("Receitas Salvas")){
+                Intent intent = new Intent(MainMinhasReceitas.this,MainMinhasReceitas.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+            }
+            else if(str.equals("Criar Receita")){
+                Intent intent = new Intent(MainMinhasReceitas.this,CriarReceita.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+            }
+            else if(str.equals("Meus dados")){
+                Intent intent = new Intent(MainMinhasReceitas.this,MainMeusDados.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+            }
         }
-        else if(str.equals("Criar Receita")){
-            Intent intent = new Intent(MainMinhasReceitas.this,CriarReceita.class);
-            startActivity(intent);
-            finish();
-        }
-        else if(str.equals("Entrar")){
+        if(str.equals("Entrar")){
             Intent intent = new Intent(MainMinhasReceitas.this,MainLogin.class);
-            startActivity(intent);
-            finish();
+            intent.putExtra("userSerializable", user);
+            context.startActivity(intent);
+        }
+        else if(str.equals("Meus dados") || str.equals("Criar Receita") ||str.equals("Receitas Salvas")){
+            if(user == null)
+                Toast.makeText(MainMinhasReceitas.this, "[ERROR] Faça seu login para acessar essas telas!", Toast.LENGTH_SHORT).show();
         }
         return false;
     }

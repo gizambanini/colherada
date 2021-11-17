@@ -32,7 +32,6 @@ public class MainLogin extends AppCompatActivity {
             @Override
             public void onClick(android.view.View v) {
                 Intent intent = new Intent(MainLogin.this,MainCriarConta.class);
-
                 startActivity(intent);
             }
         });
@@ -63,7 +62,7 @@ public class MainLogin extends AppCompatActivity {
                         if (response.body().getSenha().equals(strSenha)) {
 
                             Usuarios objUser = new Usuarios(response.body().getId(), response.body().getNome(), strEmail, strSenha, response.body().getFoto());
-                            Intent intent = new Intent(context, MainMeusDados.class);
+                            Intent intent = new Intent(context, MainActivity.class);
                             intent.putExtra("userSerializable", objUser);
                             context.startActivity(intent);
 

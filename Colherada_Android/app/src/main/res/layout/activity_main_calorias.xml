@@ -48,6 +48,7 @@
             android:id="@+id/btnCalcular"
             android:layout_width="131dp"
             android:layout_height="54dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="190dp"
             android:backgroundTint="#F8AC3A"
             android:fontFamily="@font/lato"
@@ -56,13 +57,14 @@
             android:textSize="15dp"
             app:layout_constraintBottom_toTopOf="@+id/btnHome"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtIdade" />
 
         <EditText
             android:id="@+id/edtIdade"
             android:layout_width="270dp"
             android:layout_height="48dp"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="16dp"
             android:layout_marginBottom="12dp"
             android:background="@drawable/edtcustomizado"
             android:ems="10"

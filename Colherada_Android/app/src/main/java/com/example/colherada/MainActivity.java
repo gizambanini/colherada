@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-
+    private Context context;
+    Usuarios user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tvImg3 = (TextView) findViewById(R.id.tvImg3);
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
+        this.context = MainActivity.this; //***********************************************************
+        Intent intent = getIntent();
+        user = (Usuarios) intent.getSerializableExtra("userSerializable");
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
 
@@ -54,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,58 +116,56 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,MainCalorias.class);
-                startActivity(intent);
-                finish();
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
             }
         });
         btnReceitas.setOnClickListener (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,MainReceitas.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        btnHome.setOnClickListener ( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MainLogin.class);
-                startActivity(intent);
-                finish();
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
             }
         });
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        //Toast.makeText(MainActivity.this, item.toString(), Toast.LENGTH_SHORT).show();
         String str = item.toString();
-        if(str.equals("Receitas Salvas")){
-            //Toast.makeText(MainActivity.this, "SALVAS", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(MainActivity.this,MainMinhasReceitas.class);
-            startActivity(intent);
-            finish();
+        if(user != null)
+        {
+            if(str.equals("Receitas Salvas")){
+                Intent intent = new Intent(MainActivity.this,MainMinhasReceitas.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+            }
+            else if(str.equals("Criar Receita")){
+                Intent intent = new Intent(MainActivity.this,CriarReceita.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+            }
+            else if(str.equals("Meus dados")){
+                Intent intent = new Intent(MainActivity.this,MainMeusDados.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+            }
         }
-        else if(str.equals("Criar Receita")){
-            //Toast.makeText(MainActivity.this, "criar", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(MainActivity.this,CriarReceita.class);
-            startActivity(intent);
-            finish();
-        }
-        else if(str.equals("Entrar")){
-            //Toast.makeText(MainActivity.this, "entrar", Toast.LENGTH_SHORT).show();
-
+        if(str.equals("Entrar")){
             Intent intent = new Intent(MainActivity.this,MainLogin.class);
-            startActivity(intent);
-            finish();
+            intent.putExtra("userSerializable", user);
+            context.startActivity(intent);
+        }
+        else if(str.equals("Meus dados") || str.equals("Criar Receita") ||str.equals("Receitas Salvas")){
+            if(user == null)
+                Toast.makeText(MainActivity.this, "[ERROR] Faça seu login para acessar essas telas!", Toast.LENGTH_SHORT).show();
         }
         return false;
     }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
+
 
     }
 }

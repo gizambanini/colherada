@@ -24,6 +24,27 @@ interface Service {
     @POST("/api/usuario/")
     Call<Usuarios> criarUsuario(@Body Usuarios userNovo);  //Criar novo usuário
 
+    @GET("/api/Avaliacao/") // Avaliacao
+    Call<List<Avaliacao>> getAvaliacao(); //////////////
 
+    @GET("/api/Avaliacao/{id}") //Ir na tabela Receitas e fazer +1 em avaliacao!
+    Call<List<Avaliacao>> getAvaliacaoByIdReceita(@Path("id") String id);
 
+    @POST("/api/Avaliacao/")
+    Call<Avaliacao> criarAvaliacao(@Body Avaliacao avaliacao);
+
+    @GET("/api/ReceitaFiltro/{filtro}")
+    Call<List<ReceitaFiltro>> getReceitasByFiltro(@Path("filtro") String filtro);
+
+    @GET("/api/ReceitaSalva/")
+    Call<List<ReceitaSalva>> getReceitaSalva();
+
+    @GET("/api/ReceitaSalva/{id}")
+    Call<List<ReceitaSalva>> getReceitaSalvaByIdUser(@Path("id") Integer id);
+
+    @POST("/api/ReceitaSalva/")
+    Call<ReceitaSalva> criarAvaliacao(@Body ReceitaSalva receitasalva);
+
+    @DELETE("/api/ReceitaSalva/{idReceita}/{IdUsuario}")
+    Call<ReceitaSalva> excluirReceitaSalva(@Path("idReceita") String idReceita,@Path("idUsuario") String idUsuario);
 }

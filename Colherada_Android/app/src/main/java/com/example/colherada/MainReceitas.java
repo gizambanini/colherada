@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -36,6 +37,8 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    private Context context;
+    Usuarios user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +50,9 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-
+        this.context = MainReceitas.this; //***********************************************************
+        Intent intent = getIntent();
+        user = (Usuarios) intent.getSerializableExtra("userSerializable");
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
@@ -78,18 +83,16 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(android.view.View v) {
                 Intent intent = new Intent(MainReceitas.this, MainActivity.class);
-
-                startActivity(intent);
-                finish();
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
             }
         });
         btnCalorias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
                 Intent intent = new Intent(MainReceitas.this, MainCalorias.class);
-
-                startActivity(intent);
-                finish();
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
             }
         });
 
@@ -141,22 +144,32 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         String str = item.toString();
-        Toast.makeText(MainReceitas.this, item.toString(), Toast.LENGTH_SHORT).show();
-
-        if(str.equals("Receitas Salvas")){
-            Intent intent = new Intent(MainReceitas.this,MainMinhasReceitas.class);
-            startActivity(intent);
-            finish();
+        if(user != null)
+        {
+            if(str.equals("Receitas Salvas")){
+                Intent intent = new Intent(MainReceitas.this,MainMinhasReceitas.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+            }
+            else if(str.equals("Criar Receita")){
+                Intent intent = new Intent(MainReceitas.this,CriarReceita.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+            }
+            else if(str.equals("Meus dados")){
+                Intent intent = new Intent(MainReceitas.this,MainMeusDados.class);
+                intent.putExtra("userSerializable", user);
+                context.startActivity(intent);
+            }
         }
-        else if(str.equals("Criar Receita")){
-            Intent intent = new Intent(MainReceitas.this,CriarReceita.class);
-            startActivity(intent);
-            finish();
-        }
-        else if(str.equals("Entrar")){
+        if(str.equals("Entrar")){
             Intent intent = new Intent(MainReceitas.this,MainLogin.class);
-            startActivity(intent);
-            finish();
+            intent.putExtra("userSerializable", user);
+            context.startActivity(intent);
+        }
+        else if(str.equals("Meus dados") || str.equals("Criar Receita") ||str.equals("Receitas Salvas")){
+            if(user == null)
+                Toast.makeText(MainReceitas.this, "[ERROR] Faça seu login para acessar essas telas!", Toast.LENGTH_SHORT).show();
         }
         return false;
     }
