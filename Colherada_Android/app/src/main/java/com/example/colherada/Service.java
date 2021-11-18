@@ -40,11 +40,17 @@ interface Service {
     Call<List<ReceitaSalva>> getReceitaSalva();
 
     @GET("/api/ReceitaSalva/{id}")
-    Call<List<ReceitaSalva>> getReceitaSalvaByIdUser(@Path("id") Integer id);
+    Call<List<Receitas>> getReceitaSalvaByIdUser(@Path("id") Integer id);
 
     @POST("/api/ReceitaSalva/")
     Call<ReceitaSalva> criarAvaliacao(@Body ReceitaSalva receitasalva);
 
     @DELETE("/api/ReceitaSalva/{idReceita}/{IdUsuario}")
     Call<ReceitaSalva> excluirReceitaSalva(@Path("idReceita") String idReceita,@Path("idUsuario") String idUsuario);
+
+    @PUT("/api/usuario/{idUser}")
+    Call<Usuarios> atualizarUsuario(@Path("idUser")Integer idUser, @Body Usuarios usuario);
+
+    @PUT("/api/Receitas/{idReceita}")
+    Call<Receitas> atualizarReceita(Integer idReceita, @Body Receitas receita);
 }

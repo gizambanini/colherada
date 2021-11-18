@@ -21,6 +21,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainMeusDados extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -29,7 +33,7 @@ public class MainMeusDados extends AppCompatActivity implements NavigationView.O
     ImageView imgUser;
     ImageButton btnMenu;
     Button btnReceitas, btnHome, btnCalorias, btnSalvar;
-    EditText edtxtNome, edtxtEmail, edtxtSenha;
+    EditText edtxtNome, edtxtEmail, edtxtSenha, edtxtUrlFoto;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -48,6 +52,7 @@ public class MainMeusDados extends AppCompatActivity implements NavigationView.O
         edtxtNome = (EditText) findViewById(R.id.edtxtNome);
         edtxtEmail = (EditText) findViewById(R.id.edtxtEmail);
         edtxtSenha = (EditText) findViewById(R.id.edtxtSenha);
+        edtxtUrlFoto = (EditText) findViewById(R.id.edtxtUrlFoto);
         btnSalvar = (Button) findViewById(R.id.btnSalvar);
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -68,9 +73,16 @@ public class MainMeusDados extends AppCompatActivity implements NavigationView.O
         Intent intent = getIntent();
         user = (Usuarios) intent.getSerializableExtra("userSerializable");
         if(user != null){
+            //Limpa
+            edtxtNome.setText("");
+            edtxtEmail.setText("");
+            edtxtSenha.setText("");
+            edtxtUrlFoto.setText("");
+            //Coloca novo dado
             edtxtNome.setText(user.getNome());
             edtxtEmail.setText(user.getEmail());
             edtxtSenha.setText(user.getSenha());
+            edtxtUrlFoto.setText(user.getFoto());
             if((user.getFoto() != null) && (user.getFoto().length()>0)){
                 Picasso.get().load(user.getFoto()).into(imgUser);
             }
@@ -80,23 +92,19 @@ public class MainMeusDados extends AppCompatActivity implements NavigationView.O
             }
         }
 
-        /*cdviewImgUser.setOnClickListener(new View.OnClickListener() {
+        edtxtUrlFoto.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View view) {
-                //Trocar de foto
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    Picasso.get().load(edtxtUrlFoto.getText().toString()).into(imgUser);
+                }
             }
-        });*/
+        });
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* if(edtxtNome.getText().toString() == "" && edtxtEmail .getText().toString() == ""
-                        && edtxtSenha.getText().toString() == ""){
-
-                    Snackbar.make(view,"Preencha todos os campos!", Snackbar.LENGTH_SHORT).show();
-                }else{
-                    // Atualizar dados aqui ....
-                }*/
+                alterarUsuario();
             }
         });
 
@@ -122,6 +130,32 @@ public class MainMeusDados extends AppCompatActivity implements NavigationView.O
                 Intent intent = new Intent(MainMeusDados.this,MainActivity.class);
                 intent.putExtra("userSerializable", user);
                 context.startActivity(intent);
+            }
+        });
+
+    }
+
+    public void alterarUsuario(){
+        Integer strId = user.getId();
+        String strNome = edtxtNome.getText().toString();
+        String strEmail = edtxtEmail.getText().toString();
+        String strSenha = edtxtSenha.getText().toString();
+        String strImage = edtxtUrlFoto.getText().toString();
+        Usuarios usuario = new Usuarios(strId,strNome,strEmail,strSenha, strImage);
+        Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
+        Call<Usuarios> call = service.atualizarUsuario(strId,usuario);
+        call.enqueue(new Callback<Usuarios>() {
+            @Override
+            public void onResponse(Call<Usuarios> call, Response<Usuarios> response) {
+                if(response.isSuccessful()){
+                    Intent intent = new Intent(MainMeusDados.this,MainMeusDados.class);
+                    intent.putExtra("userSerializable", usuario);
+                    context.startActivity(intent);
+                }
+            }
+            @Override
+            public void onFailure(Call<Usuarios> call, Throwable t) {
+                Toast.makeText(MainMeusDados.this, "Atualização não efetuada: " +strId + "/" + strNome + "/" + strEmail + "/" + strSenha + "/" + strImage , Toast.LENGTH_SHORT).show();
             }
         });
 

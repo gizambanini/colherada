@@ -92,25 +92,14 @@ public class MainMinhasReceitas extends AppCompatActivity implements NavigationV
         //Download JSON via Retrofit
         Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
         //Pegar a rota do Json
-        Call<List<ReceitaSalva>> call = service.getReceitaSalvaByIdUser(user.getId());
-        call.enqueue(new Callback<List<ReceitaSalva>>() {
+        Call<List<Receitas>> call = service.getReceitaSalvaByIdUser(user.getId());
+        call.enqueue(new Callback<List<Receitas>>() {
             @Override
-            public void onResponse(Call<List<ReceitaSalva>> call, Response<List<ReceitaSalva>> response) {
+            public void onResponse(Call<List<Receitas>> call, Response<List<Receitas>> response) {
 
                 if(response.isSuccessful()){
                     Toast.makeText(MainMinhasReceitas.this, "deu certo", Toast.LENGTH_LONG).show();
-                    //populateGridView(response.body());
-                    //Ir dado por dado e ir pegando o idReceita, levar para o getReceitaById(),
-
-                    // Adicionar essa receita em uma lista de receitas e usar no GridViewAdapter
-                    // criar List<Receitas>
-                    // <List<Receitas>> receitasSalvas = new <List<Receitas>>
-                    // while(response nn acabou)
-                        // pegar o idReceitas do response e pegar os dados da receitas por getReceitaById()
-                        // Receitas essaReceita = service.getReceitaById(response.id);
-                        // receitasSalvas.Add(essaReceita)
-
-                    // populateGridView(receitasSalvas);
+                    populateGridView(response.body());
 
                 }else{
                     String errorMessage = response.errorBody().toString();
@@ -121,7 +110,7 @@ public class MainMinhasReceitas extends AppCompatActivity implements NavigationV
             }
 
             @Override
-            public void onFailure(Call<List<ReceitaSalva>> call, Throwable t) {
+            public void onFailure(Call<List<Receitas>> call, Throwable t) {
                 String messageProblem = t.getMessage().toString();
                 Toast.makeText(MainMinhasReceitas.this, messageProblem, Toast.LENGTH_SHORT).show();
                 Toast.makeText(MainMinhasReceitas.this, "entrou no else do Failure", Toast.LENGTH_LONG).show();

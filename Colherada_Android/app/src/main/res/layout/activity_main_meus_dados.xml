@@ -13,17 +13,19 @@
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/main_toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    >
-                </androidx.appcompat.widget.Toolbar>
+
             </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/main_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"></androidx.appcompat.widget.Toolbar>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="wrap_content"
@@ -130,6 +132,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtxtEmail" />
 
+        <EditText
+            android:id="@+id/edtxtUrlFoto"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="30dp"
+            android:autofillHints="Nom"
+            android:background="@drawable/round_border"
+            android:ems="10"
+            android:hint="Url foto"
+            android:inputType="textPersonName"
+            android:paddingLeft="20dp"
+            android:textColorHint="#70000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.266"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtxtSenha" />
+
         <Button
             android:id="@+id/btnCalorias"
             android:layout_width="139dp"
@@ -186,11 +205,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
         <Button
             android:id="@+id/btnSalvar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/lato"
             android:padding="10dp"
             android:text="SALVAR"
@@ -199,7 +219,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtxtSenha" />
+            app:layout_constraintTop_toBottomOf="@+id/edtxtUrlFoto" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
         <com.google.android.material.navigation.NavigationView

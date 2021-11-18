@@ -27,17 +27,16 @@ namespace Colherada_API.Controllers
 
         //Método GET / Com o id passado
         [HttpGet ("{UsuarioId}")]
-        public ActionResult<List<ReceitasSalvasUser>> GetReceitasSalvas(int UsuarioId) 
+        public ActionResult<List<Receitas>> GetReceitasSalvas(int UsuarioId) 
         {
             try
             {
-                List<ReceitasSalvasUser> listaRetorno = new List<ReceitasSalvasUser>();
+                List<Receitas> listaRetorno = new List<Receitas>();
                 var listaReceitasSalvas = _context.ReceitaSalva.Where(o => o.user == UsuarioId).ToList();
                 foreach(ReceitaSalva rs in listaReceitasSalvas)
                 {
                     var essaReceita = _context.Receitas.Where(o => o.id == rs.receitas).First();
-                    ReceitasSalvasUser essaReceitaSalva = new ReceitasSalvasUser(essaReceita.nome, essaReceita.foto);
-                    listaRetorno.Add(essaReceitaSalva);
+                    listaRetorno.Add(essaReceita);
                 }
                 if (listaRetorno == null)
                 {
