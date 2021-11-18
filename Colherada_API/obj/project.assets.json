@@ -1621,25 +1621,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\isabe\\.nuget\\packages\\": {},
+    "C:\\Users\\Giovana\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\isabe\\Desktop\\COTUCA\\material_2021_2ano\\Tecnico_2_sem\\Praticas_III\\Projeto\\Colherada_API\\Colherada_API.csproj",
+      "projectUniqueName": "C:\\Users\\Giovana\\AndroidStudioProjects\\colhereda\\Colherada_API\\Colherada_API.csproj",
       "projectName": "Colherada_API",
-      "projectPath": "C:\\Users\\isabe\\Desktop\\COTUCA\\material_2021_2ano\\Tecnico_2_sem\\Praticas_III\\Projeto\\Colherada_API\\Colherada_API.csproj",
-      "packagesPath": "C:\\Users\\isabe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\isabe\\Desktop\\COTUCA\\material_2021_2ano\\Tecnico_2_sem\\Praticas_III\\Projeto\\Colherada_API\\obj\\",
+      "projectPath": "C:\\Users\\Giovana\\AndroidStudioProjects\\colhereda\\Colherada_API\\Colherada_API.csproj",
+      "packagesPath": "C:\\Users\\Giovana\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Giovana\\AndroidStudioProjects\\colhereda\\Colherada_API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\isabe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Giovana\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"

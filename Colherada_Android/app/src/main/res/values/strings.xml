@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">Colherada</string>
     <string-array name="filtro_array">
-        <item>Fitness</item>
-        <item>Doces</item>
-        <item>Sucos</item>
-        <item>Fácil</item>
-        <item>Bolos</item>
-        <item>Massas</item>
+        <item>Todas</item>
+        <item>Carnes</item>
+        <item>Bebidas</item>
+        <item>Lanches</item>
+        <item>Sobremesas</item>
+        <item>Estrangeiras</item>
+        <item>Básicos</item>
+        <item>Saudável</item>
+        <item>Veganos</item>
+        <item>Sopas</item>
     </string-array>
     <string name="openNavDrawer"></string>
     <string name="closeNavDrawer"></string>

@@ -26,11 +26,12 @@
 
                 <ImageView
                     android:id="@+id/imageView"
-                    android:layout_width="387dp"
-                    android:layout_height="400dp"
-                    android:layout_marginTop="75dp"
+                    android:layout_width="400dp"
+                    android:layout_height="406dp"
+                    android:layout_marginTop="80dp"
                     android:scaleType="fitXY"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.25"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/cinza" />
@@ -120,32 +121,20 @@
 
                 <ImageView
                     android:id="@+id/imgLike"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="39dp"
+                    android:layout_height="38dp"
                     android:layout_marginStart="10dp"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintStart_toStartOf="@+id/imageView"
                     app:layout_constraintTop_toBottomOf="@+id/imageView8"
                     app:srcCompat="@android:drawable/btn_star" />
 
-                <TextView
-                    android:id="@+id/txtLikes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:text="+100"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/imgLike"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView8" />
-
                 <ImageView
                     android:id="@+id/imgSalvo"
                     android:layout_width="35dp"
                     android:layout_height="44dp"
-                    android:layout_marginStart="257dp"
-                    app:layout_constraintStart_toEndOf="@+id/txtLikes"
+                    android:layout_marginStart="300dp"
+                    app:layout_constraintStart_toEndOf="@+id/imgLike"
                     app:layout_constraintTop_toBottomOf="@+id/imageView8"
                     app:srcCompat="@drawable/ic_salvar" />
 
@@ -177,6 +166,7 @@
                     android:layout_width="374dp"
                     android:layout_height="126dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.324"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imgSalvo">
 

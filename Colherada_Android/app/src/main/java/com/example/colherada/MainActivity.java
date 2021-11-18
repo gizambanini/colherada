@@ -97,16 +97,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 {
                     tvImg1.setText("Sobre a iniciativa");
                     tvImg2.setText("Bem-vinda(o) ao mundo da comida!");
-                    tvImg3.setText("Conheça todas os tipos de receita desponíveis\n\n- Carne/Frango/Peixe" +
-                            "- Massas" +
+                    tvImg3.setText("Conheça todas os tipos de receita desponíveis\n\n- Carnes" +
+                            "- Bedidas" +
                             "- Lanches" +
                             "- Sobremesas" +
-                            "- Estrangeira (Italiana, Japonesa, Francesa ...)" +
-                            "- Básicos (arroz,feijão, macarrão ao sugo …)" +
+                            "- Estrangeiras" +
+                            "- Básicos" +
                             "- Saudável" +
-                            "- Vegano/Vegetariano" +
-                            "- Sem glúten/Sem lactose/Sem açúcar" +
-                            "- Outros (Sucos/vitaminas/...)");
+                            "- Veganos" +
+                            "- Sopas");
                 } else {
                     tvImg3.setText("Conheça todas os tipos de receita desponíveis");
                 }

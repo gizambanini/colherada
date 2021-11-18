@@ -65,7 +65,7 @@ public class MainCalorias extends AppCompatActivity implements NavigationView.On
                 //Para emagrecer - multiplique 20 ou 25 pelo peso atual
                 //Para manter o peso - multiplique 25 ou 30 pelo peso atual
                 //Para engordar - multiplique 30 ou 35 pelo peso atual
-                txtRes.setText("Você deve ingerir: \n " +
+                txtRes.setText("Você deve ingerir:\n" +
                         "De " + peso*20 + " até " + peso*25 + " para perder peso! \n" +
                         "De " + peso*25 + " até " + peso*30 + " para manter o peso! \n" +
                         "De " + peso*30 + " até " + peso*35 + " para ganhar peso!");

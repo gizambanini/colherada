@@ -34,10 +34,7 @@ interface Service {
     Call<Avaliacao> criarAvaliacao(@Body Avaliacao avaliacao);
 
     @GET("/api/ReceitaFiltro/{filtro}")
-    Call<List<ReceitaFiltro>> getReceitasByFiltro(@Path("filtro") String filtro);
-
-    @GET("/api/ReceitaSalva/")
-    Call<List<ReceitaSalva>> getReceitaSalva();
+    Call<List<Receitas>> getReceitasByFiltro(@Path("filtro") String filtro);
 
     @GET("/api/ReceitaSalva/{id}")
     Call<List<Receitas>> getReceitaSalvaByIdUser(@Path("id") Integer id);
