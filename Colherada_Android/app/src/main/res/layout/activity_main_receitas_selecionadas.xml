@@ -7,239 +7,259 @@
     android:id="@+id/drawer_layout"
     tools:context=".MainReceitasSelecionadas">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/main_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                >
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/main_toolbar"
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="400dp"
+                android:layout_height="502dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.333"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.314"
+                app:srcCompat="@drawable/cinza" />
+
+            <Button
+                android:id="@+id/btnCalorias2"
+                android:layout_width="139dp"
+                android:layout_height="74dp"
+                android:backgroundTint="#C4C4C4"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:text="Calorias"
+                android:textAlignment="center"
+                android:textColor="#0E0E0E"
+                app:icon="@drawable/fogo"
+                app:iconGravity="top"
+                app:iconPadding="3dp"
+                app:iconSize="30dp"
+                app:iconTint="#FF0E0E0E"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btnReceitas2"
+                android:layout_width="139dp"
+                android:layout_height="74dp"
+                android:backgroundTint="#E3E3E3"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:text="Receitas"
+                android:textAlignment="center"
+                android:textColor="#0E0E0E"
+                app:icon="@drawable/receitas"
+                app:iconGravity="top"
+                app:iconPadding="6dp"
+                app:iconSize="30dp"
+                app:iconTint="#FF0E0E0E"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnHome2"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/btnHome2"
+                android:layout_width="139dp"
+                android:layout_height="74dp"
+                android:backgroundTint="#C4C4C4"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:text="Home"
+                android:textAlignment="center"
+                android:textColor="#0E0E0E"
+                app:icon="@drawable/home"
+                app:iconGravity="top"
+                app:iconPadding="6dp"
+                app:iconSize="30dp"
+                app:iconTint="#FF0E0E0E"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnCalorias2"
+                app:layout_constraintStart_toEndOf="@+id/btnReceitas2" />
+
+            <ImageView
+                android:id="@+id/imgReceitaSelecionada"
+                android:layout_width="382dp"
+                android:layout_height="163dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.344"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.112"
+                app:srcCompat="@drawable/home_img1" />
+
+            <TextView
+                android:id="@+id/txtNomeReceita"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Nome Receita"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+            <ImageView
+                android:id="@+id/imgSalvo"
+                android:layout_width="35dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgReceitaSelecionada"
+                app:srcCompat="@drawable/ic_salvar" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:text="Comentários"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="400dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:srcCompat="@drawable/laranja" />
+
+
+            <ScrollView
+                android:id="@+id/scrollview"
+                android:layout_width="385dp"
+                android:layout_height="216dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.416"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgSalvo">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    >
-                </androidx.appcompat.widget.Toolbar>
-            </com.google.android.material.appbar.AppBarLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="400dp"
-                    android:layout_height="406dp"
-                    android:layout_marginTop="80dp"
-                    android:scaleType="fitXY"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.25"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/cinza" />
-
-                <Button
-                    android:id="@+id/btnCalorias2"
-                    android:layout_width="139dp"
-                    android:layout_height="74dp"
-                    android:backgroundTint="#C4C4C4"
-                    android:fontFamily="@font/lato"
-                    android:gravity="center"
-                    android:text="Calorias"
-                    android:textAlignment="center"
-                    android:textColor="#0E0E0E"
-                    app:icon="@drawable/fogo"
-                    app:iconGravity="top"
-                    app:iconPadding="3dp"
-                    app:iconSize="30dp"
-                    app:iconTint="#FF0E0E0E"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <Button
-                    android:id="@+id/btnReceitas2"
-                    android:layout_width="139dp"
-                    android:layout_height="74dp"
-                    android:backgroundTint="#E3E3E3"
-                    android:fontFamily="@font/lato"
-                    android:gravity="center"
-                    android:text="Receitas"
-                    android:textAlignment="center"
-                    android:textColor="#0E0E0E"
-                    app:icon="@drawable/receitas"
-                    app:iconGravity="top"
-                    app:iconPadding="6dp"
-                    app:iconSize="30dp"
-                    app:iconTint="#FF0E0E0E"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btnHome2"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <Button
-                    android:id="@+id/btnHome2"
-                    android:layout_width="139dp"
-                    android:layout_height="74dp"
-                    android:backgroundTint="#C4C4C4"
-                    android:fontFamily="@font/lato"
-                    android:gravity="center"
-                    android:text="Home"
-                    android:textAlignment="center"
-                    android:textColor="#0E0E0E"
-                    app:icon="@drawable/home"
-                    app:iconGravity="top"
-                    app:iconPadding="6dp"
-                    app:iconSize="30dp"
-                    app:iconTint="#FF0E0E0E"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btnCalorias2"
-                    app:layout_constraintStart_toEndOf="@+id/btnReceitas2" />
-
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="382dp"
-                    android:layout_height="163dp"
-                    android:layout_marginTop="60dp"
-                    android:scaleType="fitCenter"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/imageView"
-                    app:srcCompat="@drawable/home_img1" />
-
-                <TextView
-                    android:id="@+id/txtNomeReceita"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="120dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Nome Receita"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
-                    app:layout_constraintStart_toStartOf="@+id/imageView"
-                    app:layout_constraintTop_toTopOf="@+id/imageView" />
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imgLike"
-                    android:layout_width="39dp"
-                    android:layout_height="38dp"
-                    android:layout_marginStart="10dp"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
-                    app:layout_constraintStart_toStartOf="@+id/imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView8"
-                    app:srcCompat="@android:drawable/btn_star" />
+                    <TextView
+                        android:id="@+id/txtCalorias"
+                        android:layout_width="400dp"
+                        android:layout_height="21dp"
+                        android:text="Calorias: "
+                        android:textSize="19dp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.461"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="480dp" />
 
-                <ImageView
-                    android:id="@+id/imgSalvo"
-                    android:layout_width="35dp"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="300dp"
-                    app:layout_constraintStart_toEndOf="@+id/imgLike"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView8"
-                    app:srcCompat="@drawable/ic_salvar" />
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Comentários"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-                <ImageView
-                    android:id="@+id/imageView12"
-                    android:layout_width="387dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="8dp"
-                    android:scaleType="fitXY"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView11"
-                    app:srcCompat="@drawable/laranja" />
-
-                <ScrollView
-                    android:id="@+id/scrollview"
-                    android:layout_width="374dp"
-                    android:layout_height="126dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.324"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imgSalvo">
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/textView8"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:paddingTop="10dp"
+                        android:text="Ingredientes"
+                        android:textSize="19dp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="336dp" />
 
-                        <TextView
-                            android:id="@+id/textView8"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Ingredientes"
-                            android:textSize="19dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtIngredientes"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Ingredientes...." />
-
-                        <TextView
-                            android:id="@+id/textView9"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingTop="10dp"
-                            android:text="Modo Preparo"
-                            android:textSize="19dp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/txtpreparo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Modo preparo....." />
-                    </LinearLayout>
-                </ScrollView>
-
-                <ScrollView
-                    android:id="@+id/comentarios"
-                    android:layout_width="375dp"
-                    android:layout_height="90dp"
-                    android:layout_marginTop="5dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/imageView12">
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/txtIngredientes"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:text="Ingredientes...."
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="362dp" />
 
-                        <ImageView
-                            android:id="@+id/imageView13"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            app:srcCompat="@drawable/user" />
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:text="Modo Preparo"
+                        android:textSize="19dp"
+                        android:textStyle="bold"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="381dp" />
 
-                        <TextView
-                            android:id="@+id/txtDadosComentario"
-                            android:layout_width="match_parent"
-                            android:layout_height="60dp"
-                            android:text="Nome:                                                                                                                                                                                                                                                                                    Comentário:" />
-                    </LinearLayout>
-                </ScrollView>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-        <com.google.android.material.navigation.NavigationView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:menu="@menu/nav_menu"
-            android:id="@+id/nav_view"
-            android:layout_gravity="start">
-        </com.google.android.material.navigation.NavigationView>
+                    <TextView
+                        android:id="@+id/txtPreparo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Modo preparo....."
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="416dp" />
+                </LinearLayout>
+            </ScrollView>
+
+            <ScrollView
+                android:id="@+id/comentarios"
+                android:layout_width="375dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView12">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageView13"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        app:srcCompat="@drawable/user" />
+
+                    <TextView
+                        android:id="@+id/txtDadosComentario"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:text="Nome:                                                                                                                                                                                                                                                                                    Comentário:" />
+                </LinearLayout>
+            </ScrollView>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:menu="@menu/nav_menu"
+        android:id="@+id/nav_view"
+        android:layout_gravity="start">
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

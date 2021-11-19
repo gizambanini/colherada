@@ -20,10 +20,11 @@ class GridViewViewAdapter extends BaseAdapter {
 
     private List<Receitas> listaReceita;
     private Context context;
-
-    public GridViewViewAdapter(Context context, List<Receitas> recebeParametroListaReceita){
+    private Usuarios user;
+    public GridViewViewAdapter(Context context, List<Receitas> recebeParametroListaReceita, Usuarios user){
         this.listaReceita = recebeParametroListaReceita;
         this.context = context;
+        this.user = user;
     }
 
     @Override
@@ -58,16 +59,15 @@ class GridViewViewAdapter extends BaseAdapter {
         if((receitas.getFoto() != null) && (receitas.getFoto().length()>0)){
             Picasso.get().load(receitas.getFoto()).into(imagemReceitaView);
         }else{
-            Toast.makeText(context, "Não carregou a imagem", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "NÃ£o carregou a imagem", Toast.LENGTH_LONG).show();
         }
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, receitas.getNome(), Toast.LENGTH_LONG).show();
-
                 Receitas objreceita = new Receitas(receitas.getId(), receitas.getNome(), receitas.getIngredientes(), receitas.getModoPreparo(), receitas.getCalorias(), receitas.getFoto(), receitas.getCriador(), receitas.getAvaliacao());
                 Intent intent = new Intent(context,MainReceitasSelecionadas.class);
+                intent.putExtra("userSerializable", user);
                 intent.putExtra("receitaSerializable",(Serializable) objreceita);
                 context.startActivity(intent);
 

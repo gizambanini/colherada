@@ -120,7 +120,7 @@ public class MainMinhasReceitas extends AppCompatActivity implements NavigationV
 
     private void populateGridView(List<Receitas> listaReceitaSalva){
         receitaGridView = (GridView) findViewById(R.id.receitaGridView);
-        adapter = new GridViewViewAdapter(this,listaReceitaSalva);
+        adapter = new GridViewViewAdapter(this,listaReceitaSalva, user);
         receitaGridView.setAdapter(adapter);
     }
 

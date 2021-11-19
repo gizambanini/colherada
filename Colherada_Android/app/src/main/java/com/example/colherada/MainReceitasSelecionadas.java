@@ -12,9 +12,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 public class MainReceitasSelecionadas extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button btnCalorias, btnHome, btnReceitas;
@@ -23,6 +26,15 @@ public class MainReceitasSelecionadas extends AppCompatActivity implements Navig
     NavigationView navigationView;
     private Context context;
     Usuarios user;
+    Receitas  receita;
+    TextView txtNomeReceita;
+    TextView txtIngredientes;
+    TextView txtPreparo;
+    TextView txtDadosComentario;
+    ImageView imgReceitaSelecionada;
+    TextView txtCalorias;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +46,13 @@ public class MainReceitasSelecionadas extends AppCompatActivity implements Navig
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        txtNomeReceita = findViewById(R.id.txtNomeReceita);
+        txtIngredientes = findViewById(R.id.txtIngredientes);
+        txtPreparo = findViewById(R.id.txtPreparo);
+        txtDadosComentario = findViewById(R.id.txtDadosComentario);
+        imgReceitaSelecionada = findViewById(R.id.imgReceitaSelecionada);
+        txtCalorias = findViewById(R.id.txtCalorias);
+
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,
@@ -48,6 +67,23 @@ public class MainReceitasSelecionadas extends AppCompatActivity implements Navig
         this.context = MainReceitasSelecionadas.this; //***********************************************************
         Intent intent = getIntent();
         user = (Usuarios) intent.getSerializableExtra("userSerializable");
+        receita = (Receitas) intent.getSerializableExtra("receitaSerializable");
+        if(receita != null){
+            //Coloca novo dado
+            txtNomeReceita.setText(receita .getNome());
+            txtIngredientes.setText(receita.getIngredientes());
+            txtPreparo.setText(receita.getModoPreparo());
+            txtCalorias.setText(("Calorias: " + receita.getCalorias().toString() + " kcal"));
+
+            if((receita .getFoto() != null) && (receita .getFoto().length()>0)){
+                Picasso.get().load(receita.getFoto()).into(imgReceitaSelecionada);
+            }
+            else
+            {
+                Picasso.get().load(R.drawable.home_img1).into(imgReceitaSelecionada);
+            }
+        }
+
         btnCalorias.setOnClickListener ( new View.OnClickListener() {
             @Override
             public void onClick(View v) {

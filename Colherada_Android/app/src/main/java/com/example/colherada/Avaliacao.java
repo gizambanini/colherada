@@ -5,58 +5,47 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Avaliacao implements Serializable {
-    @SerializedName("id")
-    private Integer id;
-    @SerializedName("usuario")
-    private Integer usuario;
-    @SerializedName("receita")
-    private Integer receita;
-    @SerializedName("curtida")
-    private Integer curtida;
+    @SerializedName("nomeUser")
+    private String nomeUser;
+    @SerializedName("imagemUser")
+    private String imagemUser;
     @SerializedName("comentario")
     private String comentario;
+    @SerializedName("estrelas")
+    private Integer estrelas;
 
-
-    public  Avaliacao (Integer id, Integer receita, Integer usuario, Integer curtida, String comentario)
+    public  Avaliacao (String nomeUser, String imagemUser, String comentario, Integer estrelas )
     {
-        this.id = id;
-        this.usuario = usuario;
-        this.receita = receita;
-        this.curtida = curtida;
-        this.comentario = comentario;
-
+        this.nomeUser = nomeUser;
+        this.imagemUser= imagemUser;
+        this.comentario= comentario;
+        this.estrelas = estrelas ;
 
     }
 
-    public Integer getId() {
-        return id;
+    public String getNomeUser() {
+        return nomeUser;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setNomeUser (String nomeUser) {
+        this.nomeUser = nomeUser;
     }
 
-    public Integer getUsuario() {
-        return usuario;
+    public String getImagemUser() {
+        return imagemUser;
     }
 
-    public void setUsuario(Integer usuario) {
-        this.usuario = usuario;
+    public void setImagemUser(String imagemUser) {
+        this.imagemUser= imagemUser;
     }
 
-    public Integer getReceita() {
-        return receita;
+    public Integer getEstrelas () {
+        return estrelas ;
     }
 
-    public void setReceita(Integer receita) {
-        this.receita = receita;
+    public void setEstrelas(Integer estrelas ) {
+        this.estrelas = estrelas ;
     }
-
-    public Integer getCurtida() {
-        return curtida;
-    }
-
-    public void setCurtida(Integer curtida) { this.curtida = curtida; }
 
     public String getComentario() {
         return comentario;
@@ -65,6 +54,5 @@ public class Avaliacao implements Serializable {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-
 
 }

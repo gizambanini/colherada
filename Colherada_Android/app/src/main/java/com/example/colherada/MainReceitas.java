@@ -33,7 +33,6 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
     Button btnHome, btnCalorias;
     private GridView receitaGridView;
     private GridViewViewAdapter adapter;
-    //ImageButton imgBtnMenu;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -44,7 +43,6 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_receitas);
         btnHome = (Button) findViewById(R.id.btnHome3);
-        //imgBtnMenu = (ImageButton) findViewById(R.id.btnMenu);
         btnCalorias = (Button) findViewById(R.id.btnCalorias3);
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -70,14 +68,7 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        /*imgBtnMenu.setOnClickListener ( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainReceitas.this,MainMinhasReceitas.class);
-                startActivity(intent);
-                finish();
-            }
-        });*/
+
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,9 +93,16 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    /*
     private void populateGridView(List<Receitas> listaReceita){
         receitaGridView = (GridView) findViewById(R.id.receitaGridView);
         adapter = new GridViewViewAdapter(this,listaReceita);
+        receitaGridView.setAdapter(adapter);
+    }*/
+
+    private void populateGridView(List<Receitas> listaReceita){
+        receitaGridView = (GridView) findViewById(R.id.receitaGridView);
+        adapter = new GridViewViewAdapter(this,listaReceita, user);
         receitaGridView.setAdapter(adapter);
     }
 
@@ -164,7 +162,7 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
             public void onResponse(Call<List<Receitas>> call, Response<List<Receitas>> response) {
 
                 if(response.isSuccessful()){
-                    Toast.makeText(MainReceitas.this, "deu certo", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(MainReceitas.this, "deu certo", Toast.LENGTH_LONG).show();
                     populateGridView(response.body());
                 }else{
                     String errorMessage = response.errorBody().toString();
@@ -196,7 +194,7 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
                 public void onResponse(Call<List<Receitas>> call, Response<List<Receitas>> response) {
 
                     if(response.isSuccessful()){
-                        Toast.makeText(MainReceitas.this, "deu certo", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(MainReceitas.this, "deu certo", Toast.LENGTH_LONG).show();
                         populateGridView(response.body());
                     }else{
                         String errorMessage = response.errorBody().toString();
