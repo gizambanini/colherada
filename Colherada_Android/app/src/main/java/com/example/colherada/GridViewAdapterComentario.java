@@ -59,11 +59,12 @@ class GridViewAdapterComentario extends BaseAdapter {
 
         tvUserComentario.setText(avaliacao.getNomeUser());
         tvComentario.setText(avaliacao.getComentario());
-
+        Toast.makeText(context, "Dados:" + avaliacao.getNomeUser() + "/" +avaliacao.getComentario() , Toast.LENGTH_LONG).show();
         if((avaliacao.getImagemUser() != null) && (avaliacao.getImagemUser().length()>0)){
             Picasso.get().load(avaliacao.getImagemUser()).into(imgComentario);
         }else{
-            Toast.makeText(context, "Não carregou a imagem", Toast.LENGTH_LONG).show();
+            Picasso.get().load(R.drawable.user).into(imgComentario);
+            //Toast.makeText(context, "Não carregou a imagem", Toast.LENGTH_LONG).show();
         }
 
         return view;
