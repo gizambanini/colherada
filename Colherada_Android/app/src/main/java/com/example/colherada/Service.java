@@ -28,7 +28,7 @@ interface Service {
     Call<List<Avaliacao>> getAvaliacao(); //////////////
 
     @GET("/api/Avaliacao/{id}") //Ir na tabela Receitas e fazer +1 em avaliacao!
-    Call<List<Avaliacao>> getAvaliacaoByIdReceita(@Path("id") String id);
+    Call<List<Avaliacao>> getAvaliacaoByIdReceita(@Path("id") Integer id);
 
     @POST("/api/Avaliacao/")
     Call<Avaliacao> criarAvaliacao(@Body Avaliacao avaliacao);

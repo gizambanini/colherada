@@ -1,27 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Giovana\\AndroidStudioProjects\\colhereda\\Colherada_API\\Colherada_API.csproj": {}
+    "C:\\Users\\milen\\AndroidStudioProjects\\COLHERADAAA\\Colherada_API\\Colherada_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Giovana\\AndroidStudioProjects\\colhereda\\Colherada_API\\Colherada_API.csproj": {
+    "C:\\Users\\milen\\AndroidStudioProjects\\COLHERADAAA\\Colherada_API\\Colherada_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Giovana\\AndroidStudioProjects\\colhereda\\Colherada_API\\Colherada_API.csproj",
+        "projectUniqueName": "C:\\Users\\milen\\AndroidStudioProjects\\COLHERADAAA\\Colherada_API\\Colherada_API.csproj",
         "projectName": "Colherada_API",
-        "projectPath": "C:\\Users\\Giovana\\AndroidStudioProjects\\colhereda\\Colherada_API\\Colherada_API.csproj",
-        "packagesPath": "C:\\Users\\Giovana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Giovana\\AndroidStudioProjects\\colhereda\\Colherada_API\\obj\\",
+        "projectPath": "C:\\Users\\milen\\AndroidStudioProjects\\COLHERADAAA\\Colherada_API\\Colherada_API.csproj",
+        "packagesPath": "C:\\Users\\milen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\milen\\AndroidStudioProjects\\COLHERADAAA\\Colherada_API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Giovana\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\milen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"

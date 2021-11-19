@@ -11,13 +11,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainReceitasSelecionadas extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button btnCalorias, btnHome, btnReceitas;
@@ -30,11 +43,10 @@ public class MainReceitasSelecionadas extends AppCompatActivity implements Navig
     TextView txtNomeReceita;
     TextView txtIngredientes;
     TextView txtPreparo;
-    TextView txtDadosComentario;
     ImageView imgReceitaSelecionada;
     TextView txtCalorias;
-
-
+    private GridViewAdapterComentario adapter;
+    GridView comentarioGridView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +61,6 @@ public class MainReceitasSelecionadas extends AppCompatActivity implements Navig
         txtNomeReceita = findViewById(R.id.txtNomeReceita);
         txtIngredientes = findViewById(R.id.txtIngredientes);
         txtPreparo = findViewById(R.id.txtPreparo);
-        txtDadosComentario = findViewById(R.id.txtDadosComentario);
         imgReceitaSelecionada = findViewById(R.id.imgReceitaSelecionada);
         txtCalorias = findViewById(R.id.txtCalorias);
 
@@ -115,6 +126,36 @@ public class MainReceitasSelecionadas extends AppCompatActivity implements Navig
 
             }
         });
+
+        Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
+
+        //Pegar a rota do Json
+        Call<List<Avaliacao>> call = service.getAvaliacaoByIdReceita(receita.getId());
+        call.enqueue(new Callback<List<Avaliacao>>() {
+            @Override
+            public void onResponse(Call<List<Avaliacao>> call, Response<List<Avaliacao>> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(MainReceitasSelecionadas.this, "deu certo AVALIACAO", Toast.LENGTH_LONG).show();
+                    populateGridView(response.body());
+                }else{
+                    String errorMessage = response.errorBody().toString();
+                    Toast.makeText(MainReceitasSelecionadas.this, errorMessage, Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainReceitasSelecionadas.this, "entrou no else do response AVALIACAO", Toast.LENGTH_LONG).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Avaliacao>> call, Throwable t) {
+                String messageProblem = t.getMessage().toString();
+                Toast.makeText(MainReceitasSelecionadas.this, messageProblem, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainReceitasSelecionadas.this, "entrou no else do Failure avaliacao", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void populateGridView(List<Avaliacao> listaAvaliacao){
+        comentarioGridView = (GridView) findViewById(R.id.comGridView);
+        adapter = new GridViewAdapterComentario(this,listaAvaliacao);
+        comentarioGridView.setAdapter(adapter);
     }
 
     @Override
