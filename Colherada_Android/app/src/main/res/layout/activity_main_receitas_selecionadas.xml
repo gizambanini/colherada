@@ -237,6 +237,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:numColumns="1" />
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|bottom"
+                    android:backgroundTint="@color/orange"
+                    android:layout_margin="20dp"
+                  />/  android:src="@android:drawable/ic_input_coment"/>
 
             </ScrollView>
 
