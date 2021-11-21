@@ -69,11 +69,11 @@ public class MainCalorias extends AppCompatActivity implements NavigationView.On
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
-                double peso = Integer.parseInt(edtPeso.getText().toString());
+                int peso = Integer.parseInt(edtPeso.getText().toString());
                 //Para emagrecer - multiplique 20 ou 25 pelo peso atual
                 //Para manter o peso - multiplique 25 ou 30 pelo peso atual
                 //Para engordar - multiplique 30 ou 35 pelo peso atual
-                txtRes.setText("Você deve ingerir:\n" +
+                txtRes.setText("Você deve ingerir:\n\n" +
                         "De " + peso*20 + " kcal até " + peso*25 + " kcal para PERDER peso! \n\n" +
                         "De " + peso*25 + " kcal até " + peso*30 + " kcal para MANTER o peso! \n\n" +
                         "De " + peso*30 + " kcal até " + peso*35 + " kcal para GANHAR peso!");
