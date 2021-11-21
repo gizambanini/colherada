@@ -26,12 +26,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+
     private Context context;
     Usuarios user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         btnHome = (Button) findViewById(R.id.btnHome);
         btnCalorias = (Button) findViewById(R.id.btnCalorias);
         btnReceitas = (Button) findViewById(R.id.btnReceitas);
@@ -41,14 +44,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tvImg1 = (TextView) findViewById(R.id.tvImg1);
         tvImg2 = (TextView) findViewById(R.id.tvImg2);
         tvImg3 = (TextView) findViewById(R.id.tvImg3);
+
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
-        this.context = MainActivity.this; //***********************************************************
+
+        this.context = MainActivity.this;
+
+        //Pega os dados do usuário logado (passado pelo Intent)
         Intent intent = getIntent();
         user = (Usuarios) intent.getSerializableExtra("userSerializable");
+
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
@@ -59,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        // Métodos clicks dos cards na tela Home
         cardView1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +120,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
+
+        //Métodos clicks dos botões de baixo (Calorias/Receitas)
         btnCalorias.setOnClickListener ( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,6 +143,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         String str = item.toString();
+        // Menu lateral (se não tiver login algumas telas não podem ser abertas)
         if(user != null)
         {
             if(str.equals("Receitas Salvas")){

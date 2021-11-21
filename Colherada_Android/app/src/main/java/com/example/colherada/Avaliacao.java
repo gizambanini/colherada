@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Avaliacao implements Serializable {
+    @SerializedName("id")
+    private Integer id;
     @SerializedName("nomeUser")
     private String nomeUser;
     @SerializedName("imagemUser")

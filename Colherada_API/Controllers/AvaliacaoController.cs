@@ -1,5 +1,6 @@
 using System.Collections.Generic; 
 using System.Linq;
+using System;
 using Microsoft.AspNetCore.Mvc; 
 using Colherada_API.Data; 
 using Colherada_API.Models;
@@ -53,13 +54,15 @@ namespace Colherada_API.Controllers
                 }
             }
 
+            
+
             //Método POST / ADICIONAR 
             [HttpPost]
             public async Task<ActionResult> post(Avaliacao model)
             {
-                //Ir na tabela Receitas e fazer +1 em avaliacao!   <<---------------------------
                 try
                 {
+                    Console.WriteLine(model.receita + "/User:" + model.usuario);
                     _context.Avaliacao.Add(model);
                     if (await _context.SaveChangesAsync() == 1)
                     {

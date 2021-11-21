@@ -18,6 +18,10 @@ import java.util.List;
 
 class GridViewViewAdapter extends BaseAdapter {
 
+    // Classe para fazer os cards das receitas com as fotos e nomes
+    // Método onClick() que leva os dados da receita junto com as do usuário logado
+    // para a tela de ReceitaSelecionada
+
     private List<Receitas> listaReceita;
     private Context context;
     private Usuarios user;

@@ -20,6 +20,7 @@
                 >
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -27,14 +28,13 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="400dp"
-                android:layout_height="502dp"
+                android:layout_height="450dp"
+                android:layout_marginTop="70dp"
                 android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.333"
+                app:layout_constraintHorizontal_bias="0.454"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.314"
                 app:srcCompat="@drawable/cinza" />
 
             <Button
@@ -128,36 +128,24 @@
                 android:layout_marginEnd="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgReceitaSelecionada"
-                app:srcCompat="@drawable/ic_salvar" />
+                app:srcCompat="@drawable/salvar" />
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="2dp"
                 android:text="Comentários"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-            <ImageView
-                android:id="@+id/imageView12"
-                android:layout_width="400dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="8dp"
-                android:scaleType="fitXY"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView11"
-                app:srcCompat="@drawable/laranja" />
-
-
             <ScrollView
                 android:id="@+id/scrollview"
                 android:layout_width="385dp"
-                android:layout_height="216dp"
+                android:layout_height="170dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.416"
@@ -223,25 +211,50 @@
                 </LinearLayout>
             </ScrollView>
 
-            <ScrollView
-                android:id="@+id/comentarios"
-                android:layout_width="375dp"
-                android:layout_height="90dp"
-                android:layout_marginTop="5dp"
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="400dp"
+                android:layout_height="60dp"
+                android:background="@drawable/laranja"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageView12">
+                app:layout_constraintTop_toBottomOf="@+id/textView11">
 
-                <GridView
-                    android:id="@+id/comGridView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:numColumns="1" />
+                <EditText
+                    android:id="@+id/edtComentarioFeito"
+                    android:layout_width="290dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="3dp"
+                    android:hint="Adicionar um comentário..."></EditText>
 
+                <Button
+                    android:id="@+id/btnComentar"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginVertical="7dp"
+                    android:backgroundTint="#F8E9D4"
+                    android:fontFamily="@font/lato"
+                    android:text="Enviar"
+                    android:textAlignment="center"
+                    android:textColor="@color/black">
 
+                </Button>
 
-            </ScrollView>
+            </LinearLayout>
 
+            <GridView
+                android:id="@+id/comGridView"
+                android:layout_width="400dp"
+                android:layout_height="110dp"
+                android:background="@drawable/laranja"
+                android:padding="6dp"
+                android:scrollbars="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -253,13 +266,4 @@
         android:id="@+id/nav_view"
         android:layout_gravity="start">
     </com.google.android.material.navigation.NavigationView>
-    <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
-        android:backgroundTint="@color/orange"
-        android:layout_margin="20dp"
-        android:src="@android:drawable/ic_input_coment"
-        /  android:src="@android:drawable/ic_input_coment"/>/>-->
 </androidx.drawerlayout.widget.DrawerLayout>

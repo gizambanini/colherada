@@ -21,6 +21,7 @@ import retrofit2.Response;
 
 class GridViewAdapterComentario extends BaseAdapter {
 
+    //Classe para colocar os comentários na tela de receita selecionada;
     private List<Avaliacao> listaAvaliacao;
     private Context context;
 
@@ -48,23 +49,20 @@ class GridViewAdapterComentario extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
 
         if(view == null){
-            view = LayoutInflater.from(context).inflate(R.layout.layout_gridview, parent,false);
+            view = LayoutInflater.from(context).inflate(R.layout.layout_comentario, parent,false);
         }
+        Avaliacao avaliacao = listaAvaliacao.get(position);
 
         TextView tvUserComentario = view.findViewById(R.id.tvUserComentario);
         TextView tvComentario = view.findViewById(R.id.tvComentario);
         ImageView imgComentario = view.findViewById(R.id.imgComentario);
 
-        Avaliacao avaliacao = listaAvaliacao.get(position);
-
         tvUserComentario.setText(avaliacao.getNomeUser());
         tvComentario.setText(avaliacao.getComentario());
-        Toast.makeText(context, "Dados:" + avaliacao.getNomeUser() + "/" +avaliacao.getComentario() , Toast.LENGTH_LONG).show();
         if((avaliacao.getImagemUser() != null) && (avaliacao.getImagemUser().length()>0)){
             Picasso.get().load(avaliacao.getImagemUser()).into(imgComentario);
         }else{
             Picasso.get().load(R.drawable.user).into(imgComentario);
-            //Toast.makeText(context, "Não carregou a imagem", Toast.LENGTH_LONG).show();
         }
 
         return view;

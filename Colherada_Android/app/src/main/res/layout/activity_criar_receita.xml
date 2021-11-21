@@ -28,6 +28,7 @@
                     android:id="@+id/btnSalvarNovaReceita"
                     android:layout_width="122dp"
                     android:layout_height="51dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="92dp"
                     android:backgroundTint="#F8AC3A"
                     android:fontFamily="@font/lato"
@@ -38,7 +39,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtCaloria" />
 
                 <ImageView
                     android:id="@+id/imgReceita"
@@ -53,10 +55,10 @@
 
                 <EditText
                     android:id="@+id/edtIngrediente"
-                    android:layout_width="380dp"
+                    android:layout_width="0dp"
                     android:layout_height="70dp"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="280dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/edtcustomizado"
                     android:ems="10"
@@ -74,15 +76,15 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtNome"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <EditText
                     android:id="@+id/edtCaloria"
-                    android:layout_width="380dp"
+                    android:layout_width="0dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="528dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/edtcustomizado"
                     android:ems="10"
@@ -92,17 +94,16 @@
                     android:paddingLeft="8dp"
                     android:textAlignment="textStart"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtUrlFt"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <EditText
                     android:id="@+id/edtPreparo"
-                    android:layout_width="380dp"
+                    android:layout_width="0dp"
                     android:layout_height="93dp"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="360dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/edtcustomizado"
                     android:ems="10"
@@ -120,15 +121,15 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtIngrediente"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <EditText
                     android:id="@+id/edtNome"
-                    android:layout_width="380dp"
-                    android:layout_height="40dp"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="232dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/edtcustomizado"
                     android:ems="10"
@@ -140,15 +141,15 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imgReceita"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <EditText
                     android:id="@+id/edtUrlFt"
-                    android:layout_width="380dp"
+                    android:layout_width="0dp"
                     android:layout_height="57dp"
                     android:layout_marginStart="15dp"
-                    android:layout_marginTop="460dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/edtcustomizado"
                     android:ems="10"
@@ -160,7 +161,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtPreparo"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <Button

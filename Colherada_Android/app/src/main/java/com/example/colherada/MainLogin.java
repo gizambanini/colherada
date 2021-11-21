@@ -47,10 +47,13 @@ public class MainLogin extends AppCompatActivity {
 
     //Método para login
     private void login(Context esseContext) {
+        this.context = esseContext;
 
+        //Pega os dados digitados nos EditTexts
         String strEmail = edtEmail.getText().toString();
         String strSenha = edtSenha.getText().toString();
-        this.context = esseContext;
+
+        // Pega os dados do usuário com o email digitado
         Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
         Call<Usuarios> call = service.getUsuarioByEmail(strEmail);
 
@@ -59,14 +62,15 @@ public class MainLogin extends AppCompatActivity {
             public void onResponse(Call<Usuarios> call, Response<Usuarios> response) {
                 if (response.isSuccessful()) {
                    if(response.body().getSenha() != null) {
-                        if (response.body().getSenha().equals(strSenha)) {
-
+                        if (response.body().getSenha().equals(strSenha))
+                        {
+                            // senha trazida é a mesma digitada = Login certo
+                            // usa os dados do respose para criar um usuário que será
+                            // passado para todas as telas
                             Usuarios objUser = new Usuarios(response.body().getId(), response.body().getNome(), strEmail, strSenha, response.body().getFoto());
                             Intent intent = new Intent(context, MainActivity.class);
                             intent.putExtra("userSerializable", objUser);
                             context.startActivity(intent);
-
-                            // MUDAR PARA LEVAR PRA HOME
                         }
                     }
                     else {

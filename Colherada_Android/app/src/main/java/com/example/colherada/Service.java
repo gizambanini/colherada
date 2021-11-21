@@ -24,30 +24,29 @@ interface Service {
     @POST("/api/usuario/")
     Call<Usuarios> criarUsuario(@Body Usuarios userNovo);  //Criar novo usuário
 
-    @GET("/api/Avaliacao/") // Avaliacao
-    Call<List<Avaliacao>> getAvaliacao(); //////////////
-
-    @GET("/api/Avaliacao/{id}") //Ir na tabela Receitas e fazer +1 em avaliacao!
+    @GET("/api/Avaliacao/{id}") // pega os comentários da receita
     Call<List<Avaliacao>> getAvaliacaoByIdReceita(@Path("id") Integer id);
 
-    @POST("/api/Avaliacao/")
-    Call<Avaliacao> criarAvaliacao(@Body Avaliacao avaliacao);
+    @POST("/api/Avaliacao/") // adiciona um comentário
+    Call<Comentario> criarComentario(@Body Comentario comentario);
 
-    @GET("/api/ReceitaFiltro/{filtro}")
+    @GET("/api/ReceitaFiltro/{filtro}") //pega as receitas pelo filtro
     Call<List<Receitas>> getReceitasByFiltro(@Path("filtro") String filtro);
 
-    @GET("/api/ReceitaSalva/{id}")
+    @GET("/api/ReceitaSalva/{id}") // pega as receitas que o usuário salvou
     Call<List<Receitas>> getReceitaSalvaByIdUser(@Path("id") Integer id);
 
-    @POST("/api/ReceitaSalva/")
-    Call<ReceitaSalva> criarAvaliacao(@Body ReceitaSalva receitasalva);
+    @GET("/api/ReceitaSalva/{idUser}/{receita}") // ver se o usuário logado salvou uma receita específica
+    Call<List<ReceitaSalva>> verSeSalvou(@Path("idUser") Integer idUser,@Path("receita") Integer receita);
 
-    @DELETE("/api/ReceitaSalva/{idReceita}/{IdUsuario}")
-    Call<ReceitaSalva> excluirReceitaSalva(@Path("idReceita") String idReceita,@Path("idUsuario") String idUsuario);
+    @POST("/api/ReceitaSalva/") // salva a receita selecionada
+    Call<ReceitaSalva> salvarReceita(@Body ReceitaSalva receitasalva);
 
-    @PUT("/api/usuario/{idUser}")
+    @DELETE("/api/ReceitaSalva/{idReceita}/{idUsuario}") // deixa de salvar a receita
+    Call<ReceitaSalva> excluirReceitaSalva(@Path("idReceita") Integer idReceita,@Path("idUsuario") Integer idUsuario);
+
+    @PUT("/api/usuario/{idUser}") //atualiza os dados do usuário
     Call<Usuarios> atualizarUsuario(@Path("idUser")Integer idUser, @Body Usuarios usuario);
 
-    @PUT("/api/Receitas/{idReceita}")
-    Call<Receitas> atualizarReceita(Integer idReceita, @Body Receitas receita);
+
 }

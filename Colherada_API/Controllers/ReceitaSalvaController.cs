@@ -51,6 +51,32 @@ namespace Colherada_API.Controllers
             }
         }
 
+        //Método GET / Com o id passado e id
+        [HttpGet ("{UsuarioId}/{ReceitaId}")]
+        public ActionResult<List<ReceitaSalva>> VerSeJaSalvou(int UsuarioId, int ReceitaId) 
+        {
+            try
+            {
+                List<ReceitaSalva> listaRetorno = new List<ReceitaSalva>();
+                var listaReceitasSalvas = _context.ReceitaSalva.Where(o => o.user == UsuarioId).ToList();
+                foreach(ReceitaSalva rs in listaReceitasSalvas) 
+                {
+                    if(rs.receitas == ReceitaId)
+                        listaRetorno.Add(rs);
+                    
+                }
+                if (listaRetorno == null)
+                {
+                    return NotFound();
+                }
+                return Ok(listaRetorno);
+            }
+            catch
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "[ERROR] Falha no acesso ao banco de dados.");
+            }
+        }   
+
         //Método POST / ADICIONAR 
         [HttpPost]
         public async Task<ActionResult> post(ReceitaSalva model)
@@ -72,19 +98,25 @@ namespace Colherada_API.Controllers
         }
 
         //Método DELETE
-        [HttpDelete("{idReceita,UsuarioId}")]
+        [HttpDelete("{idReceita}/{UsuarioId}")]
         public async Task<ActionResult> delete(int idReceita, int UsuarioId)
         {
             try
             {
-                var receitaSalva = _context.ReceitaSalva.Where(o => o.user == UsuarioId);
-                receitaSalva = _context.ReceitaSalva.Where(o => o.receitas == idReceita);
-                if (receitaSalva == null)
+                var receitaSalva = _context.ReceitaSalva.Where(o => o.user == UsuarioId).ToList();
+                ReceitaSalva receitaParaExcluir = null;
+                foreach(ReceitaSalva rs in receitaSalva) 
+                {
+                    if(rs.receitas == idReceita)
+                        receitaParaExcluir = rs;
+                    
+                }
+                if (receitaParaExcluir == null)
                 {
                     //método do EF
                     return NotFound();
                 }
-                _context.Remove(receitaSalva);
+                _context.Remove(receitaParaExcluir);
                 await _context.SaveChangesAsync();
                 return NoContent();
             }

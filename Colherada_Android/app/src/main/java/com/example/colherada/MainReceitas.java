@@ -36,21 +36,22 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+
     private Context context;
     Usuarios user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_receitas);
+
         btnHome = (Button) findViewById(R.id.btnHome3);
         btnCalorias = (Button) findViewById(R.id.btnCalorias3);
+
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        this.context = MainReceitas.this; //***********************************************************
-        Intent intent = getIntent();
-        user = (Usuarios) intent.getSerializableExtra("userSerializable");
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 drawerLayout,
@@ -61,6 +62,13 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        this.context = MainReceitas.this;
+
+        //Pega os dados do usuário logado
+        Intent intent = getIntent();
+        user = (Usuarios) intent.getSerializableExtra("userSerializable");
+
         // filtro
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.filtro_array, android.R.layout.simple_spinner_item);
@@ -68,8 +76,7 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-
-
+        //Botões no canto inferior tela
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
@@ -87,20 +94,14 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
             }
         });
 
-        pegarTodasReceitas();
+        pegarTodasReceitas(); // Inicia a tela mostrando todas as receitas;
 
 
 
     }
 
-    /*
     private void populateGridView(List<Receitas> listaReceita){
-        receitaGridView = (GridView) findViewById(R.id.receitaGridView);
-        adapter = new GridViewViewAdapter(this,listaReceita);
-        receitaGridView.setAdapter(adapter);
-    }*/
-
-    private void populateGridView(List<Receitas> listaReceita){
+        // Método que coloca as receitas em formatos de cards e mostra na tela;
         receitaGridView = (GridView) findViewById(R.id.receitaGridView);
         adapter = new GridViewViewAdapter(this,listaReceita, user);
         receitaGridView.setAdapter(adapter);
@@ -108,19 +109,20 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
 
     @Override // filtro
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        // chama método que vai pegar as receitas de acordo com o filtro selecionado
+        // passa o filtro pelo parâmetro
         String txt = adapterView.getItemAtPosition(i).toString();
         pegarReceitasFiltro(txt);
-        Toast.makeText(adapterView.getContext(),txt,Toast.LENGTH_SHORT).show();
     }
 
     @Override // filtro
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         String str = item.toString();
+        // Menu com as telas inacessíveis sem login
         if(user != null)
         {
             if(str.equals("Receitas Salvas")){
@@ -155,14 +157,14 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
         //Download JSON via Retrofit
         Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
 
-        //Pegar a rota do Json
+        //Pega todas as receitas do BD
         Call<List<Receitas>> call = service.getReceita();
         call.enqueue(new Callback<List<Receitas>>() {
             @Override
             public void onResponse(Call<List<Receitas>> call, Response<List<Receitas>> response) {
 
                 if(response.isSuccessful()){
-                    //Toast.makeText(MainReceitas.this, "deu certo", Toast.LENGTH_LONG).show();
+                    // passa todos os dados para o método criar os cards
                     populateGridView(response.body());
                 }else{
                     String errorMessage = response.errorBody().toString();
@@ -183,18 +185,19 @@ public class MainReceitas extends AppCompatActivity implements AdapterView.OnIte
 
     private void pegarReceitasFiltro(String qualFiltro){
 
-        if (qualFiltro.equals("Todas"))
-            pegarTodasReceitas();
+        if (qualFiltro.equals("Todas")) // Se filtro for TDS
+            pegarTodasReceitas(); //Chama o método que pega todas as receitas do BD
         else {
-
             Service service  = RetrofitConfig.getRetrofitInstance().create(Service.class);
+
+            // Pega as receitas pelo filtro passado como parâmetro
             Call<List<Receitas>> call = service.getReceitasByFiltro(qualFiltro);
             call.enqueue(new Callback<List<Receitas>>() {
                 @Override
                 public void onResponse(Call<List<Receitas>> call, Response<List<Receitas>> response) {
 
                     if(response.isSuccessful()){
-                        //Toast.makeText(MainReceitas.this, "deu certo", Toast.LENGTH_LONG).show();
+                        // Passa as receitas encontradas do filtro para serem tranformadas em cards
                         populateGridView(response.body());
                     }else{
                         String errorMessage = response.errorBody().toString();

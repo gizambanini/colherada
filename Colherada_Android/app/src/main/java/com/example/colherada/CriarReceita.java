@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,6 +35,7 @@ public class CriarReceita extends AppCompatActivity implements NavigationView.On
     Button btnHome, btnCalorias, btnReceitas, btnSalvarNovaReceita;
     EditText edtNome, edtIngrediente, edtPreparo, edtUrlFt, edtCaloria;
     ImageView imgReceita;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +44,7 @@ public class CriarReceita extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+
         btnHome = (Button) findViewById(R.id.btnHome);
         btnCalorias = (Button) findViewById(R.id.btnCalorias);
         btnReceitas = (Button) findViewById(R.id.btnReceitas);
@@ -63,9 +67,14 @@ public class CriarReceita extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        this.context = CriarReceita.this; //***********************************************************
+
+        this.context = CriarReceita.this;
+
+        //Pega o usuário passado pelo intent
         Intent intent = getIntent();
         user = (Usuarios) intent.getSerializableExtra("userSerializable");
+
+        //Botões do menu de baixo (Calorias/Home/Receitas)
         btnCalorias.setOnClickListener ( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,29 +98,39 @@ public class CriarReceita extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
+
+        //Muda o imgReceita quando usuário colocar URL
         edtUrlFt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    Picasso.get().load(edtUrlFt.getText().toString()).into(imgReceita);
+                    if(edtUrlFt.getText().toString() != "")
+                        Picasso.get().load(edtUrlFt.getText().toString()).into(imgReceita);
                 }
             }
         });
+
+        //Botão de salvar a receita
         btnSalvarNovaReceita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(android.view.View v) {
+                //Vê se falta alguma informação
                 if(edtNome.getText().toString().equals("")&&edtIngrediente.getText().toString().equals("")&&
                         edtPreparo.getText().toString().equals("")&&
                         edtUrlFt.getText().toString().equals("")&&
                         edtCaloria.getText().toString().equals("")) {
                     Toast.makeText(CriarReceita.this, "Preencha todas os campos!", Toast.LENGTH_LONG).show();
-                }else{
+                }
+                else{
+                    // Todos os dados estão certos
+                    // Guarda as infos em variáveis
                     String strNome = edtNome.getText().toString();
                     String strIng = edtIngrediente.getText().toString();
                     String strPrep = edtPreparo.getText().toString();
                     String strFoto = edtUrlFt.getText().toString();
                     Integer intCaloria = Integer.parseInt(edtCaloria.getText().toString());
 
+                    //Cria receita e insere no BD
                     Receitas receita = new Receitas(null,strNome,strIng,strPrep,intCaloria,strFoto,user.getId(),0);
                     Service service = RetrofitConfig.getRetrofitInstance().create(Service.class);
                     Call<Receitas> call = service.incluirReceita(receita);
@@ -119,8 +138,10 @@ public class CriarReceita extends AppCompatActivity implements NavigationView.On
                         @Override
                         public void onResponse(Call<Receitas> call, Response<Receitas> response) {
                             if(response.isSuccessful()){
+                                //Passa o user e a receita para a tela de Receitas
                                 Intent intent = new Intent(CriarReceita.this,MainReceitas.class);
-                                intent.putExtra("userSerializable", receita);
+                                intent.putExtra("userSerializable", user);
+                                intent.putExtra("receitaSerializable",receita);
                                 context.startActivity(intent);
                             }
                         }
@@ -135,7 +156,10 @@ public class CriarReceita extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item)
+    {
+        // Botões do menu lateral
+        // Não deixa abrir se não tiver feito login
         String str = item.toString();
         if(user != null)
         {
